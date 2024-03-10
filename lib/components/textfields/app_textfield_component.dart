@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../settings/app_colors.dart';
 import '../../settings/app_fonts.dart';
@@ -119,28 +120,28 @@ class _AppTextFieldComponentState extends State<AppTextFieldComponent> {
               borderSide: BorderSide(
                 color: !validated ? AppColors.textRedColor : AppColors.greyLiteColor,
               ),
-              borderRadius: BorderRadius.circular(999),
+              borderRadius: BorderRadius.circular(15),
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 color: !validated ? AppColors.textRedColor : AppColors.greyLiteColor,
               ),
-              borderRadius: BorderRadius.circular(999),
+              borderRadius: BorderRadius.circular(15),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 color: !validated ? AppColors.textRedColor : AppColors.greyLiteColor,
               ),
-              borderRadius: BorderRadius.circular(999),
+              borderRadius: BorderRadius.circular(15),
             ),
             errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(999),
+              borderRadius: BorderRadius.circular(15),
               borderSide: const BorderSide(
                 color: AppColors.textRedColor,
               ),
             ),
             focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(999),
+              borderRadius: BorderRadius.circular(15),
               borderSide: const BorderSide(
                 color: AppColors.textRedColor,
               ),
@@ -148,8 +149,12 @@ class _AppTextFieldComponentState extends State<AppTextFieldComponent> {
             suffixIcon: widget.suffixIcon == null ? null : GestureDetector(
               onTap: () => widget.suffixIconOnTap!.call(),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(15, 8, 10, 8),
-                child: Image.asset(widget.suffixIcon!, color: AppColors.textGreyColor, width: 24,),
+                padding: const EdgeInsets.all(15),
+                child: SvgPicture.asset(
+                  widget.suffixIcon!,
+                  color: AppColors.textGreyColor,
+                  height: 15,
+                ),
               ),
             ),
             hintText: widget.hint,

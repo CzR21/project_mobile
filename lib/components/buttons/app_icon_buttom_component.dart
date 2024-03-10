@@ -38,7 +38,7 @@ class _AppIconButtomComponentState extends State<AppIconButtomComponent> {
         height: widget.width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(double.infinity),
+          borderRadius: BorderRadius.circular(999),
           color: widget.backgroundColor ?? AppColors.greyLiteColor
         ),
         child: SvgPicture.asset(

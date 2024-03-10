@@ -73,11 +73,11 @@ class _AppButtomComponentState extends State<AppButtomComponent> {
         alignment: Alignment.center,
         shape: RoundedRectangleBorder(
           side: widget.outlined ? BorderSide(color: widget.primaryColor ?? AppColors.orangeColor,) : BorderSide.none,
-          borderRadius: BorderRadius.circular(100),
+          borderRadius: BorderRadius.circular(15),
         ),
         shadowColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
-        backgroundColor: !widget.outlined ? widget.primaryColor ?? AppColors.orangeColor : Colors.transparent,
+        backgroundColor: !widget.outlined ? widget.primaryColor ?? AppColors.orangeDarkColor : Colors.transparent,
         maximumSize: const Size(double.infinity, 50,),
         minimumSize: Size(widget.width ?? double.infinity, 50,),
       ),

@@ -14,9 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Food APP',
-      home: const HomePage(),
       debugShowCheckedModeBanner: false,
-      //initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.login,
       navigatorObservers: [AppRoutes.myRouteObserver],
       routes: AppRoutes.routes,
       navigatorKey: AppRoutes.navigatorKey,

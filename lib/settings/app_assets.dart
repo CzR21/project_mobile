@@ -37,5 +37,8 @@ class AppAssets{
     static const String visibilityOnIcon = "$_iconsPath/Visibility_on.svg";
     static const String volumeIcon = "$_iconsPath/Volume.svg";
     static const String watchIcon = "$_iconsPath/Watch.svg";
+    static const String googleIcon = "$_iconsPath/google.svg";
+    static const String facebookIcon = "$_iconsPath/facebook.svg";
+    static const String twitterIcon = "$_iconsPath/twitter.svg";
 }
 

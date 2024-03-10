@@ -14,6 +14,12 @@ class AppFonts{
     fontFamily: 'Sen',
   );
 
+  static const TextStyle subTitle2 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Sen',
+  );
+
   static const TextStyle subTitleBold = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,
