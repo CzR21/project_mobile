@@ -23,6 +23,7 @@ class AppColors{
     static const Color textGreyColor = Color.fromRGBO(100, 105, 130, 1);
     static const Color textDarkColor = Color.fromRGBO(50, 52, 62, 1);
     static const Color textOrangeColor = Color.fromRGBO(255, 118, 34, 1);
+    static const Color textRedColor = Color.fromRGBO(224, 68, 68, 1);
     static const Color textOrageLiteColor = Color.fromRGBO(255, 242, 224, 1);
 
     //Icons

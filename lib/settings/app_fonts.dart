@@ -31,14 +31,12 @@ class AppFonts{
     fontSize: 13,
     fontWeight: FontWeight.w400,
     fontFamily: 'Sen',
-    height: 1.14,
   );
 
   static const TextStyle regularSmall = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
     fontFamily: 'Sen',
-    height: 1.33,
   );
 
   static const TextStyle boldLarge = TextStyle(

@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Food APP',
       home: const HomePage(),
+      debugShowCheckedModeBanner: false,
+      //initialRoute: AppRoutes.home,
       navigatorObservers: [AppRoutes.myRouteObserver],
       routes: AppRoutes.routes,
       navigatorKey: AppRoutes.navigatorKey,
