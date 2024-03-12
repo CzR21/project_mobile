@@ -32,7 +32,7 @@ class _AppIconButtomComponentState extends State<AppIconButtomComponent> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => widget,
+      onTap: () => widget.function.call(),
       child: Container(
         width: widget.width,
         height: widget.width,

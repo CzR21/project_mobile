@@ -19,6 +19,7 @@ class AppTextFieldComponent extends StatefulWidget {
   final List<TextInputFormatter>? formatters;
   final String? hint;
   final TextStyle? hintStyle;
+  final String? prefixIcon;
   final String? suffixIcon;
   final void Function()? suffixIconOnTap;
   final void Function(String value)? onEdit;
@@ -27,6 +28,7 @@ class AppTextFieldComponent extends StatefulWidget {
   final bool optional;
   final bool obscureText;
   final bool hasErrorText;
+  final double? fontSize;
   final String? Function(String? value)? validator;
   final void Function(bool isValid)? onValidate;
 
@@ -43,6 +45,7 @@ class AppTextFieldComponent extends StatefulWidget {
     this.formatters,
     this.hint,
     this.hintStyle,
+    this.prefixIcon,
     this.suffixIcon,
     this.suffixIconOnTap,
     this.onEdit,
@@ -52,6 +55,7 @@ class AppTextFieldComponent extends StatefulWidget {
     this.optional = true,
     this.hasErrorText = true,
     this.validator,
+    this.fontSize,
     this.onValidate,
     this.textCapitalization,
   });
@@ -110,7 +114,7 @@ class _AppTextFieldComponentState extends State<AppTextFieldComponent> {
           onChanged: widget.onEdit,
           textCapitalization: widget.textCapitalization ?? TextCapitalization.none,
           onFieldSubmitted: widget.onSubmit,
-          style: AppFonts.regularDefault.copyWith(color: !validated && !focusNode.hasFocus ? AppColors.textRedColor : AppColors.textGreyColor,),
+          style: AppFonts.regularDefault.copyWith(color: !validated && !focusNode.hasFocus ? AppColors.textRedColor : AppColors.textGreyColor, fontSize: widget.fontSize ?? 13),
           cursorColor: !validated && !focusNode.hasFocus ? AppColors.textRedColor : AppColors.textGreyColor,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(16),
@@ -144,6 +148,14 @@ class _AppTextFieldComponentState extends State<AppTextFieldComponent> {
               borderRadius: BorderRadius.circular(15),
               borderSide: const BorderSide(
                 color: AppColors.textRedColor,
+              ),
+            ),
+            prefixIcon: widget.prefixIcon == null ? null : Padding(
+              padding: const EdgeInsets.all(15),
+              child: SvgPicture.asset(
+                widget.prefixIcon!,
+                color: AppColors.textGreyColor,
+                height: 15,
               ),
             ),
             suffixIcon: widget.suffixIcon == null ? null : GestureDetector(

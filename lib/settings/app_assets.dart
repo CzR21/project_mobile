@@ -3,6 +3,16 @@ class AppAssets{
     static const String _imagesPath = "assets/images";
     static const String _iconsPath = "assets/icons";
 
+    //Images
+    static const String arabeImage = "$_imagesPath/arabe.png";
+    static const String boloImage = "$_imagesPath/bolo.png";
+    static const String brasileiraImage = "$_imagesPath/brasileira.png";
+    static const String hamburguerImage = "$_imagesPath/hamburguer.png";
+    static const String japonesaImage = "$_imagesPath/japonesa.png";
+    static const String pastelImage = "$_imagesPath/pastel.png";
+    static const String pizzaImage = "$_imagesPath/pizza.png";
+    static const String sorveteImage = "$_imagesPath/sorvete.png";
+
     //Icons
     static const String arrowBackIcon = "$_iconsPath/Arrow_back.svg";
     static const String bellIcon = "$_iconsPath/Bell.svg";
