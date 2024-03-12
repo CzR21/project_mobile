@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                             individualKey: _passwordFormkey,
                             suffixIcon: visibleText ? AppAssets.visibilityOffIcon : AppAssets.visibilityOnIcon,
                             suffixIconOnTap: () => setState(() => visibleText = !visibleText),
-                            obscureText: visibleText,
+                            obscureText: !visibleText,
                             onEdit: (_) => _passwordFormkey.currentState!.validate(),
                             validator: (_) {
                               if(_passwordController.text.isEmpty){

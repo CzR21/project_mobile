@@ -118,7 +118,7 @@ class _CadastroPageState extends State<CadastroPage> {
                                 individualKey: _passwordFormkey,
                                 suffixIcon: visibleText ? AppAssets.visibilityOffIcon : AppAssets.visibilityOnIcon,
                                 suffixIconOnTap: () => setState(() => visibleText = !visibleText),
-                                obscureText: visibleText,
+                                obscureText: !visibleText,
                                 onEdit: (_) => _passwordFormkey.currentState!.validate(),
                                 validator: (_) {
                                   if(_passwordController.text.isEmpty){
@@ -134,9 +134,9 @@ class _CadastroPageState extends State<CadastroPage> {
                                 label: 'confirmar senha',
                                 controller: _confirmPasswordController,
                                 individualKey: _confirmPasswordFormkey,
-                                suffixIcon: visibleText ? AppAssets.visibilityOffIcon : AppAssets.visibilityOnIcon,
-                                suffixIconOnTap: () => setState(() => visibleText = !visibleText),
-                                obscureText: visibleText,
+                                suffixIcon: visibleText2 ? AppAssets.visibilityOffIcon : AppAssets.visibilityOnIcon,
+                                suffixIconOnTap: () => setState(() => visibleText2 = !visibleText2),
+                                obscureText: !visibleText2,
                                 onEdit: (_) => _confirmPasswordFormkey.currentState!.validate(),
                                 validator: (_) {
                                   if(_confirmPasswordController.text.isEmpty){
