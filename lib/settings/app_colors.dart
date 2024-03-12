@@ -48,4 +48,14 @@ class AppColors{
     static const Color semanticYellowColor = Color.fromRGBO(255, 210, 124, 1);
     static const Color semanticRedColor = Color.fromRGBO(224, 68, 68, 1);
 
+    //Lites
+    static const Color liteReColor = Color.fromRGBO(251, 74, 89, 0.5);
+    static const Color liteOrangeColor = Color.fromRGBO(251, 111, 61, 0.5);
+    static const Color liteYellowColor = Color.fromRGBO(255, 170, 42, 0.5);
+    static const Color liteGreenColor = Color.fromRGBO(115, 175, 0, 0.5);
+    static const Color liteCianColor = Color.fromRGBO(42, 255, 255, 0.5);
+    static const Color liteLiteBlueColor = Color.fromRGBO(54, 155, 255, 0.5);
+    static const Color liteBlueColor = Color.fromRGBO(65, 61, 251, 0.5);
+    static const Color litePurpleColor = Color.fromRGBO(179, 61, 251, 0.5);
+    static const Color liteGreyColor = Color.fromRGBO(180, 185, 202, 0.5);
 }

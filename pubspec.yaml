@@ -43,7 +43,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.13
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -53,6 +54,11 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/Logo.png"
 
 # The following section is specific to Flutter packages.
 flutter:
@@ -85,3 +91,7 @@ flutter:
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash:
+  image: assets/images/Splash_image.png
+  background_image: "assets/images/Splash_back.png"

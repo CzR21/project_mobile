@@ -5,17 +5,18 @@ import 'package:project_mobile/settings/app_assets.dart';
 import 'package:project_mobile/settings/app_colors.dart';
 import 'package:project_mobile/settings/app_fonts.dart';
 
-class AppRestauranteComponent extends StatefulWidget {
+class RestauranteWidget extends StatefulWidget {
 
   final RestauranteModel model;
 
-  const AppRestauranteComponent({super.key, required this.model});
+  const RestauranteWidget({super.key, required this.model});
 
   @override
-  State<AppRestauranteComponent> createState() => _AppRestauranteComponentState();
+  State<RestauranteWidget> createState() => _RestauranteWidgetState();
 }
 
-class _AppRestauranteComponentState extends State<AppRestauranteComponent> {
+class _RestauranteWidgetState extends State<RestauranteWidget> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(

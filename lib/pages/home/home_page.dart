@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_mobile/blocs/restaurante/restaurante_bloc.dart';
-import 'package:project_mobile/components/produtos/app_restaurante_component.dart';
+import 'package:project_mobile/pages/home/widgets/restaurante_widget.dart';
 import 'package:project_mobile/data/models/restaurante_model.dart';
 import 'package:project_mobile/helpers/date_helper.dart';
 import 'package:project_mobile/settings/app_assets.dart';
@@ -9,7 +9,7 @@ import 'package:project_mobile/settings/app_colors.dart';
 import 'package:project_mobile/settings/app_fonts.dart';
 import 'package:bloc/bloc.dart';
 import '../../blocs/restaurante/restaurante_state.dart';
-import '../../components/produtos/app_categorioa_component.dart';
+import 'widgets/categoria_widget.dart';
 import '../../components/textfields/app_textfield_component.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,9 +27,8 @@ class _HomePageState extends State<HomePage> {
     'Pizza': AppAssets.pizzaImage,
     'Lanche': AppAssets.hamburguerImage,
     'Japonesa': AppAssets.japonesaImage,
-    'Árabe': AppAssets.arabeImage,
     'Brasileira': AppAssets.brasileiraImage,
-    'Pastel': AppAssets.pastelImage,
+    'Bebidas': AppAssets.bebidasImage,
     'Doces': AppAssets.boloImage,
     'Sorvete': AppAssets.sorveteImage,
   };
@@ -90,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   children: _categorias.entries.map((entry) => Padding(
                     padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-                    child: AppCategoriaComponent(nome: entry.key, image: entry.value,),
+                    child: CategoriaWidget(nome: entry.key, image: entry.value,),
                   )).toList()
                 ),
               ),
@@ -110,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                   if(state is SuccessGetPrincipaisRestaurantesState){
                     return Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: _restaurantes.map((e) => AppRestauranteComponent(model: e)).toList(),
+                      children: _restaurantes.map((e) => RestauranteWidget(model: e)).toList(),
                     );
                   }else if(state is ErrorGetPrincipaisRestaurantesState){
                     //TODO: Tratar erro dps
