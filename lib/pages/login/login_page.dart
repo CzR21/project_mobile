@@ -68,9 +68,9 @@ class _LoginPageState extends State<LoginPage> {
                     height: contrains.maxHeight*5/7,
                     width: double.infinity,
                     padding: const EdgeInsets.all(25),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppColors.backgroundColor,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20),),
                     ),
                     child: SingleChildScrollView(
                       child: Column(
@@ -198,13 +198,13 @@ class _LoginPageState extends State<LoginPage> {
     var validateEmail = _emailFormkey.currentState!.validate();
     var validatePassword = _passwordFormkey.currentState!.validate();
 
-    if(validateEmail && validatePassword){
+    //if(validateEmail && validatePassword){
       //TODO: Implementar login
       setState(() => loadingLogin = true);
       await Future.delayed(const Duration(seconds: 2)).then((value) {
         setState(() => loadingLogin = false);
         Navigator.of(context).pushReplacementNamed(AppRoutes.home);
       });
-    }
+    //}
   }
 }

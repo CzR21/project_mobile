@@ -78,9 +78,9 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
                         height: contrains.maxHeight*5/7,
                         width: double.infinity,
                         padding: const EdgeInsets.all(25),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: AppColors.backgroundColor,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20),),
                         ),
                         child: SingleChildScrollView(
                           child: Column(

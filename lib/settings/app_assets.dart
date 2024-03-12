@@ -14,6 +14,7 @@ class AppAssets{
 
     //Icons
     static const String arrowBackIcon = "$_iconsPath/Arrow_back.svg";
+    static const String bagIcon = "$_iconsPath/bag.svg";
     static const String bellIcon = "$_iconsPath/Bell.svg";
     static const String callIcon = "$_iconsPath/Call.svg";
     static const String carIcon = "$_iconsPath/Car.svg";
@@ -26,6 +27,7 @@ class AppAssets{
     static const String heartIcon = "$_iconsPath/Heart.svg";
     static const String homeIcon = "$_iconsPath/Home.svg";
     static const String infoIcon = "$_iconsPath/Info.svg";
+    static const String locationIcon = "$_iconsPath/location.svg";
     static const String logoutIcon = "$_iconsPath/Logout.svg";
     static const String messageIcon = "$_iconsPath/Message.svg";
     static const String micOffIcon = "$_iconsPath/Mic_off.svg";
