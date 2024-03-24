@@ -1,14 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_mobile/settings/app_routes.dart';
-
 import '../../components/buttons/app_back_buttom_component.dart';
 import '../../components/buttons/app_buttom_component.dart';
-import '../../components/buttons/app_text_buttom_component.dart';
-import '../../components/checkbox/app_checkbox_component.dart';
 import '../../components/textfields/app_textfield_component.dart';
 import '../../data/masks/app_masks.dart';
-import '../../settings/app_assets.dart';
 import '../../settings/app_colors.dart';
 import '../../settings/app_fonts.dart';
 
@@ -116,6 +110,7 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
                                         SizedBox(
                                           width: contrains.maxWidth/5,
                                           child: AppTextFieldComponent(
+                                            hasErrorText: false,
                                             label: 'Código',
                                             controller: _digito1Controller,
                                             individualKey: _digito1Formkey,
@@ -132,6 +127,7 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
                                         SizedBox(
                                           width: contrains.maxWidth/5,
                                           child: AppTextFieldComponent(
+                                            hasErrorText: false,
                                             controller: _digito2Controller,
                                             individualKey: _digito2Formkey,
                                             onEdit: (_){
@@ -147,6 +143,7 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
                                         SizedBox(
                                           width: contrains.maxWidth/5,
                                           child: AppTextFieldComponent(
+                                            hasErrorText: false,
                                             controller: _digito3Controller,
                                             individualKey: _digito3Formkey,
                                             onEdit: (_){
@@ -162,6 +159,7 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
                                         SizedBox(
                                           width: contrains.maxWidth/5,
                                           child: AppTextFieldComponent(
+                                            hasErrorText: false,
                                             controller: _digito4Controller,
                                             individualKey: _digito4Formkey,
                                             onEdit: (_){
@@ -200,8 +198,19 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
   }
 
   _sendCode(){
-    if(_emailFormkey.currentState!.validate()){
-      setState(() => sendCode = true);
+    if(sendCode){
+      var validate1 = _digito1Formkey.currentState!.validate();
+      var validate2 = _digito2Formkey.currentState!.validate();
+      var validate3 = _digito3Formkey.currentState!.validate();
+      var validate4 = _digito4Formkey.currentState!.validate();
+
+      if(validate1 && validate2 && validate3 && validate4){
+
+      }
+    }else{
+      if(_emailFormkey.currentState!.validate()){
+        setState(() => sendCode = true);
+      }
     }
   }
 }

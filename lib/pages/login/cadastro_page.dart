@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:project_mobile/components/buttons/app_back_buttom_component.dart';
-import 'package:project_mobile/components/buttons/app_icon_buttom_component.dart';
 import '../../components/buttons/app_buttom_component.dart';
 import '../../components/textfields/app_textfield_component.dart';
 import '../../data/masks/app_masks.dart';

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,9 +8,7 @@ import 'package:project_mobile/helpers/date_helper.dart';
 import 'package:project_mobile/settings/app_assets.dart';
 import 'package:project_mobile/settings/app_colors.dart';
 import 'package:project_mobile/settings/app_fonts.dart';
-import 'package:bloc/bloc.dart';
 import '../../blocs/restaurante/restaurante_state.dart';
-import '../../components/buttons/app_back_buttom_component.dart';
 import '../../components/buttons/app_icon_buttom_component.dart';
 import 'widgets/categoria_widget.dart';
 import '../../components/textfields/app_textfield_component.dart';
