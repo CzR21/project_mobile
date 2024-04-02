@@ -12,7 +12,7 @@ class RestauranteBloc extends Bloc<RestauranteEvent, RestauranteState> {
   RestauranteBloc() : super(RestauranteInitial()) {
     on<GetPrincipaisRestaurantesEvent>((event, emit) async {
       try {
-        emit(SuccessGetPrincipaisRestaurantesState(model: await RestauranteRepository.getPirncipaisRestaurantes()));
+        emit(SuccessGetPrincipaisRestaurantesState(model: await RestauranteRepository.getPrincipaisRestaurantes()));
       } on ErrorModel catch (e) {
         emit(ErrorGetPrincipaisRestaurantesState(erro: e));
       }

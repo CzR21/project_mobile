@@ -4,7 +4,7 @@ import '../data/models/restaurante_model.dart';
 
 class RestauranteRepository{
 
-  static Future<List<RestauranteModel>> getPirncipaisRestaurantes() async {
+  static Future<List<RestauranteModel>> getPrincipaisRestaurantes() async {
     try{
       return <RestauranteModel>[
         RestauranteModel(
@@ -22,7 +22,7 @@ class RestauranteRepository{
           categorias: [Categoria.Lanche],
           frete: 3.00,
           tempo: "25 min",
-          image: "burger_express.jpg",
+          image: "hamburgueria.jpg",
           nota: 4.2,
         ),
         RestauranteModel(
@@ -31,7 +31,7 @@ class RestauranteRepository{
           categorias: [Categoria.Japonesa],
           frete: 6.00,
           tempo: "40 min",
-          image: "sushi_palace.jpg",
+          image: "sushi.jpg",
           nota: 4.8,
         ),
         RestauranteModel(
@@ -40,7 +40,7 @@ class RestauranteRepository{
           categorias: [Categoria.Arabe],
           frete: 4.50,
           tempo: "35 min",
-          image: "falafel_house.jpg",
+          image: "lanches.jpg",
           nota: 4.0,
         ),
         RestauranteModel(
@@ -49,7 +49,7 @@ class RestauranteRepository{
           categorias: [Categoria.Brasileira],
           frete: 7.00,
           tempo: "45 min",
-          image: "sabor_brasileiro.jpg",
+          image: "restaurante.jpg",
           nota: 4.6,
         ),
         RestauranteModel(
@@ -58,7 +58,7 @@ class RestauranteRepository{
           categorias: [Categoria.Pastel],
           frete: 4.00,
           tempo: "20 min",
-          image: "pastelaria_do_joao.jpg",
+          image: "lanches.jpg",
           nota: 4.3,
         ),
         RestauranteModel(
@@ -67,7 +67,7 @@ class RestauranteRepository{
           categorias: [Categoria.Doces],
           frete: 5.50,
           tempo: "30 min",
-          image: "doces_delicias.jpg",
+          image: "confeitaria.jpg",
           nota: 4.7,
         ),
         RestauranteModel(
@@ -76,7 +76,7 @@ class RestauranteRepository{
           categorias: [Categoria.Sorvete],
           frete: 4.50,
           tempo: "25 min",
-          image: "gelateria_gelatto.jpg",
+          image: "sorveteria.jpg",
           nota: 4.9,
         ),
         RestauranteModel(
@@ -85,7 +85,7 @@ class RestauranteRepository{
           categorias: [Categoria.Pizza],
           frete: 5.00,
           tempo: "30 min",
-          image: "forno_da_vovo.jpg",
+          image: "pizzaria.jpg",
           nota: 4.4,
         ),
         RestauranteModel(
@@ -94,7 +94,7 @@ class RestauranteRepository{
           categorias: [Categoria.Lanche],
           frete: 3.50,
           tempo: "20 min",
-          image: "cafe_aromatico.jpg",
+          image: "lanches.jpg",
           nota: 4.6,
         ),
       ];
