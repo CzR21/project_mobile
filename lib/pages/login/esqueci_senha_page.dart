@@ -54,7 +54,9 @@ class _EsqueciSenhaPageState extends State<EsqueciSenhaPage> {
                       child: Container(
                         height: contrains.maxHeight*1/7,
                         alignment: Alignment.bottomCenter,
-                        child: SingleChildScrollView(
+                        child: GlowingOverscrollIndicator(
+                          axisDirection: AxisDirection.down,
+                          color: Colors.transparent,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [

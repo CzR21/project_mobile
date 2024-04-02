@@ -1,12 +1,12 @@
 enum Categoria{
-  pizza,
-  lanche,
-  japonesa,
-  arabe,
-  brasileira,
-  pastel,
-  doces,
-  sorvete,
+  Pizza,
+  Lanche,
+  Japonesa,
+  Arabe,
+  Brasileira,
+  Pastel,
+  Doces,
+  Sorvete,
 }
 
 class RestauranteModel{

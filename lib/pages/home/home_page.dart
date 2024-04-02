@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project_mobile/blocs/restaurante/restaurante_bloc.dart';
+import 'package:project_mobile/helpers/bottom_sheet_helper.dart';
+import 'package:project_mobile/pages/home/widgets/endereco_bottom_sheet.dart';
 import 'package:project_mobile/pages/home/widgets/restaurante_widget.dart';
 import 'package:project_mobile/data/models/restaurante_model.dart';
 import 'package:project_mobile/helpers/date_helper.dart';
@@ -53,17 +55,20 @@ class _HomePageState extends State<HomePage> {
         headerSliverBuilder: (context, inner) => [
           SliverAppBar(
             centerTitle: true,
-            title: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset(
-                  AppAssets.locationIcon,
-                  width: 25,
-                  color: AppColors.iconOrangeColor,
-                ),
-                const SizedBox(width: 5,),
-                Text('Rua dos bobos, 0', style: AppFonts.boldDefault.copyWith(color: AppColors.textDarkColor),)
-              ],
+            title: GestureDetector(
+              onTap: () => BottomSheetHelper.show(context: context, isScrollable: true, child: const EnderecoBottomSheet(), ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(
+                    AppAssets.locationIcon,
+                    width: 25,
+                    color: AppColors.iconOrangeColor,
+                  ),
+                  const SizedBox(width: 5,),
+                  Text('Rua dos bobos, 0', style: AppFonts.boldDefault.copyWith(color: AppColors.textDarkColor),)
+                ],
+              ),
             ),
             backgroundColor: AppColors.backgroundColor,
             leading: Padding(
