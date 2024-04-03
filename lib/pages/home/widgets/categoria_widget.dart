@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:project_mobile/settings/app_colors.dart';
-import 'package:project_mobile/settings/app_fonts.dart';
+import 'package:project_mobile/config/app_colors.dart';
+import 'package:project_mobile/config/app_fonts.dart';
 
 class CategoriaWidget extends StatelessWidget {
 

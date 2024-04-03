@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:project_mobile/settings/app_assets.dart';
+import 'package:project_mobile/config/app_assets.dart';
 
-import '../../settings/app_colors.dart';
+import '../../config/app_colors.dart';
 
 class AppIconButtomComponent extends StatefulWidget{
 

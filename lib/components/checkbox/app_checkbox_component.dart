@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:project_mobile/settings/app_assets.dart';
-import 'package:project_mobile/settings/app_colors.dart';
+import 'package:project_mobile/config/app_assets.dart';
+import 'package:project_mobile/config/app_colors.dart';
 
 class AppCheckBoxComponent extends StatefulWidget {
 

@@ -1,4 +1,4 @@
-import 'package:project_mobile/settings/app_assets.dart';
+import 'package:project_mobile/config/app_assets.dart';
 
 enum TipoEndereco { casa, trabalho, none }
 

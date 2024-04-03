@@ -5,10 +5,10 @@ import 'package:project_mobile/components/buttons/app_text_buttom_component.dart
 import 'package:project_mobile/components/checkbox/app_checkbox_component.dart';
 import 'package:project_mobile/components/textfields/app_textfield_component.dart';
 import 'package:project_mobile/data/masks/app_masks.dart';
-import 'package:project_mobile/settings/app_assets.dart';
-import 'package:project_mobile/settings/app_colors.dart';
-import 'package:project_mobile/settings/app_fonts.dart';
-import 'package:project_mobile/settings/app_routes.dart';
+import 'package:project_mobile/config/app_assets.dart';
+import 'package:project_mobile/config/app_colors.dart';
+import 'package:project_mobile/config/app_fonts.dart';
+import 'package:project_mobile/config/app_routes.dart';
 
 enum Tipologin { email, google, facebook, twitter }
 

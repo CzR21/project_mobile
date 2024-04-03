@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_mobile/settings/app_colors.dart';
+import 'package:project_mobile/config/app_colors.dart';
 
 class BottomSheetHelper {
 

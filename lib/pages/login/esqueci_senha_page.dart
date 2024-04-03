@@ -3,8 +3,8 @@ import '../../components/buttons/app_back_buttom_component.dart';
 import '../../components/buttons/app_buttom_component.dart';
 import '../../components/textfields/app_textfield_component.dart';
 import '../../data/masks/app_masks.dart';
-import '../../settings/app_colors.dart';
-import '../../settings/app_fonts.dart';
+import '../../config/app_colors.dart';
+import '../../config/app_fonts.dart';
 
 class EsqueciSenhaPage extends StatefulWidget {
   const EsqueciSenhaPage({Key? key}) : super(key: key);

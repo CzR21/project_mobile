@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../settings/app_assets.dart';
-import '../../settings/app_colors.dart';
+import '../../config/app_assets.dart';
+import '../../config/app_colors.dart';
 import 'app_icon_buttom_component.dart';
 
 class AppBackButtomComnponent extends StatelessWidget {
