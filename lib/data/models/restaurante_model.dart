@@ -1,3 +1,5 @@
+import 'package:project_mobile/data/models/produto_model.dart';
+
 enum Categoria{
   Pizza,
   Lanche,
@@ -18,6 +20,8 @@ class RestauranteModel{
   String tempo;
   String image;
   double nota;
+  String descricao;
+  List<String> produtos;
 
   RestauranteModel({
     required this.id,
@@ -26,7 +30,9 @@ class RestauranteModel{
     required this.frete,
     required this.tempo,
     required this.image,
-    required this.nota
+    required this.nota,
+    required this.descricao,
+    required this.produtos,    
   });
 
   String get categoriasString{
