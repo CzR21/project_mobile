@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project_mobile/blocs/restaurante/restaurante_bloc.dart';
+import 'package:project_mobile/config/app_mock.dart';
+import 'package:project_mobile/config/app_routes.dart';
+import 'package:project_mobile/data/models/endereco_model.dart';
 import 'package:project_mobile/helpers/bottom_sheet_helper.dart';
 import 'package:project_mobile/pages/home/widgets/endereco_bottom_sheet.dart';
 import 'package:project_mobile/pages/home/widgets/restaurante_widget.dart';
@@ -10,6 +14,7 @@ import 'package:project_mobile/helpers/date_helper.dart';
 import 'package:project_mobile/config/app_assets.dart';
 import 'package:project_mobile/config/app_colors.dart';
 import 'package:project_mobile/config/app_fonts.dart';
+import 'package:provider/provider.dart';
 import '../../blocs/restaurante/restaurante_state.dart';
 import '../../components/buttons/app_icon_buttom_component.dart';
 import 'widgets/categoria_widget.dart';
@@ -40,6 +45,8 @@ class _HomePageState extends State<HomePage> {
 
   final RestauranteBloc _restauranteBloc = RestauranteBloc();
 
+  late EnderecoModel _endereco;
+
   @override
   void initState() {
     _restauranteBloc.add(GetPrincipaisRestaurantesEvent());
@@ -48,6 +55,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    _endereco = Provider.of<AppMock>(context, listen: true).endereco;
+
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: NestedScrollView(
@@ -57,47 +66,56 @@ class _HomePageState extends State<HomePage> {
             centerTitle: true,
             title: GestureDetector(
               onTap: () => BottomSheetHelper.show(context: context, isScrollable: true, child: const EnderecoBottomSheet(), ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SvgPicture.asset(
-                    AppAssets.locationIcon,
-                    width: 25,
-                    color: AppColors.iconOrangeColor,
-                  ),
-                  const SizedBox(width: 5,),
-                  Text('Rua dos bobos, 0', style: AppFonts.boldDefault.copyWith(color: AppColors.textDarkColor),)
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SvgPicture.asset(
+                      AppAssets.locationIcon,
+                      width: 25,
+                      color: AppColors.iconOrangeColor,
+                    ),
+                    const SizedBox(width: 5,),
+                    Expanded(child: Text("${_endereco.longadouro}, ${_endereco.numero}", style: AppFonts.boldDefault.copyWith(color: AppColors.textDarkColor), overflow: TextOverflow.fade,))
+                  ],
+                ),
               ),
             ),
             backgroundColor: AppColors.backgroundColor,
             leading: Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: AppIconButtomComponent(
-                  icon: AppAssets.drawerIcon,
-                  backgroundColor: AppColors.greyLiteColor,
+              padding: const EdgeInsets.only(left: 20.0, bottom: 10),
+              child: Container(
+                width: 55,
+                height: 55,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.greyLiteColor, width: 2),
+                  borderRadius: BorderRadius.circular(999),
+                ),
+                child: SvgPicture.asset(
+                  AppAssets.userIcon,
+                  width: 25,
                   color: AppColors.darkColor,
-                  width: 45,
-                  iconWidth: 25,
-                  function: () => Navigator.of(context).pop()
+                ),
               ),
             ),
             actions: [
               Padding(
-                padding: const EdgeInsets.only(right: 20.0),
+                padding: const EdgeInsets.only(right: 20.0, bottom: 10),
                 child: AppIconButtomComponent(
-                    icon: AppAssets.bagIcon,
-                    backgroundColor: AppColors.darkColor,
-                    color: AppColors.textWhiteColor,
-                    width: 55,
-                    iconWidth: 30,
-                    function: () => Navigator.of(context).pop()
+                  icon: AppAssets.bagIcon,
+                  backgroundColor: AppColors.darkColor,
+                  color: AppColors.textWhiteColor,
+                  width: 55,
+                  iconWidth: 30,
+                  function: () => Navigator.of(context).pushNamed(AppRoutes.carrinho),
                 ),
               )
             ],
             leadingWidth: 75,
             elevation: 0,
-            toolbarHeight: 55,
+            toolbarHeight: 65,
           ),
         ],
         body: SingleChildScrollView(

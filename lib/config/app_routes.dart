@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_mobile/data/models/restaurante_model.dart';
+import 'package:project_mobile/pages/carrinho/carrinho_page.dart';
 import 'package:project_mobile/pages/home/home_page.dart';
 import 'package:project_mobile/pages/login/cadastro_page.dart';
 import 'package:project_mobile/pages/login/esqueci_senha_page.dart';
@@ -14,9 +15,14 @@ class AppRoutes {
   static const String cadastro = '/cadastro';
   static const String esqueciSenha = '/esqueciSenha';
 
+  //Home
   static const String home = '/home';
 
+  //Restaurantes e produtos
   static const String restaurante = '/restaurante';
+
+  // Carrinho
+  static const String carrinho = '/carrinho';
 
   static final Map<String, WidgetBuilder> routes = {
     login: (context) => const LoginPage(),
@@ -27,7 +33,8 @@ class AppRoutes {
       final restauranteArg = ModalRoute.of(context)!.settings.arguments as RestauranteModel;
 
       return RestaurantePage(restaurante: restauranteArg);
-    }
+    },
+    carrinho: (context) => const CarrinhoPage(),
   };
 
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
