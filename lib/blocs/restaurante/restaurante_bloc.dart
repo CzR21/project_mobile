@@ -12,7 +12,13 @@ class RestauranteBloc extends Bloc<RestauranteEvent, RestauranteState> {
   RestauranteBloc() : super(RestauranteInitial()) {
     on<GetPrincipaisRestaurantesEvent>((event, emit) async {
       try {
-        emit(SuccessGetPrincipaisRestaurantesState(model: await RestauranteRepository.getPrincipaisRestaurantes()));
+        var restaurantes = await RestauranteRepository.getPrincipaisRestaurantes();
+
+        if(event.search != null && event.search!.isNotEmpty){
+          restaurantes = restaurantes.where((e) => e.nome.toLowerCase().contains(event.search!.toLowerCase()),).toList();
+        }
+
+        emit(SuccessGetPrincipaisRestaurantesState(model: restaurantes));
       } on ErrorModel catch (e) {
         emit(ErrorGetPrincipaisRestaurantesState(erro: e));
       }
