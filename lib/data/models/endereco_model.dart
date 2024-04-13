@@ -27,7 +27,7 @@ class EnderecoModel{
   String get image {
     switch(tipoEndereco){
       case TipoEndereco.casa: return AppAssets.homeIcon;
-      case TipoEndereco.trabalho: return AppAssets.homeIcon;
+      case TipoEndereco.trabalho: return AppAssets.buildingIcon;
       case TipoEndereco.none: return AppAssets.watchIcon;
     }
   }

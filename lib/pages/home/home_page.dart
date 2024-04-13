@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -77,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                       color: AppColors.iconOrangeColor,
                     ),
                     const SizedBox(width: 5,),
-                    Expanded(child: Text("${_endereco.longadouro}, ${_endereco.numero}", style: AppFonts.boldDefault.copyWith(color: AppColors.textDarkColor), overflow: TextOverflow.fade,))
+                    Flexible(child: Text("${_endereco.longadouro}, ${_endereco.numero}", style: AppFonts.boldDefault.copyWith(color: AppColors.textDarkColor), overflow: TextOverflow.fade,))
                   ],
                 ),
               ),
@@ -144,6 +143,7 @@ class _HomePageState extends State<HomePage> {
                   controller: _searchController,
                   hint: 'Pesquisar',
                   prefixIcon: AppAssets.searchIcon,
+                  onEdit: (value) => _restauranteBloc.add(GetPrincipaisRestaurantesEvent(search: value)),
                 ),
 
                 const SizedBox(height: 40,),
@@ -175,10 +175,24 @@ class _HomePageState extends State<HomePage> {
                   },
                   builder: (context, state) {
                     if(state is SuccessGetPrincipaisRestaurantesState){
-                      return Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: _restaurantes.map((e) => RestauranteWidget(model: e)).toList(),
-                      );
+                      if(_restaurantes.isEmpty){
+                        return Container(
+                          alignment: Alignment.center,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const SizedBox(height: 50,),
+                              SvgPicture.asset(AppAssets.notFoundIcon, width: 100,),
+                              Text('Nenhum restaurante encontrado!', style: AppFonts.regularLarge.copyWith(color: AppColors.darkColor), textAlign: TextAlign.center,),
+                            ],
+                          ),
+                        );
+                      }else{
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: _restaurantes.map((e) => RestauranteWidget(model: e)).toList(),
+                        );
+                      }
                     }else if(state is ErrorGetPrincipaisRestaurantesState){
                       //TODO: Tratar erro dps
                       return Text('Erro!', style: AppFonts.subTitle.copyWith(color: AppColors.darkColor),);
