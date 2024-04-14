@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:project_mobile/data/models/carrinho_model.dart';
 import 'package:project_mobile/data/models/produto_model.dart';
+import 'package:project_mobile/repositories/carrinho_repository.dart';
 
 class ProdutoWidget extends StatefulWidget {
   final model;
@@ -43,7 +45,9 @@ class _ProdutoWidgetState extends State<ProdutoWidget> {
                     child: Container(
                       height: 100,
                       decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage("assets/images/produto/${widget.model.value[index].imagem}")),
+                        image: DecorationImage(
+                            image: AssetImage(
+                                "assets/images/produto/${widget.model.value[index].imagem}")),
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
@@ -70,8 +74,28 @@ class _ProdutoWidgetState extends State<ProdutoWidget> {
                                 MaterialStatePropertyAll(EdgeInsets.all(2))),
                         iconSize: 20,
                         onPressed: () {
-                          // TODO: adicionar ao carrinho direto e informar o usuário que foi adicionado
-                          
+                          // TODO: informar o usuário que foi adicionado
+                          setState(() {
+                            List<CarrinhoModel> carrinho =
+                                CarrinhoRepository.listaCarrinho;
+                            String newProduto = widget.model.value[index].id;
+
+                            try {
+                              final filter = carrinho.firstWhere((element) => element.produtoId == newProduto);
+                              filter.quantidade++;
+                            } catch (e) {
+                              String lastId = carrinho.isNotEmpty
+                                  ? carrinho[carrinho.length - 1].id
+                                  : '0';
+                              CarrinhoRepository.listaCarrinho.add(
+                                CarrinhoModel(
+                                  id: "${int.parse(lastId) + 1}",
+                                  produtoId: newProduto,
+                                  quantidade: 1,
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                     ],
