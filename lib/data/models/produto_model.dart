@@ -17,6 +17,7 @@ class ProdutoModel{
   int quntidade;
   String? observacao;
   CategoriaProduto categoria;
+  String empresaId;
 
   ProdutoModel({
     required this.id,
@@ -27,5 +28,6 @@ class ProdutoModel{
     this.quntidade = 1,
     this.observacao,
     required this.categoria,
+    required this.empresaId,
   });
 }

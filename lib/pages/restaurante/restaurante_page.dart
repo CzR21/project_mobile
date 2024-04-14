@@ -14,7 +14,7 @@ import 'package:project_mobile/repositories/produtos_repository.dart';
 class RestaurantePage extends StatefulWidget {
   final RestauranteModel restaurante;
   const RestaurantePage({super.key, required this.restaurante});
-  
+
   @override
   _RestaurantePageState createState() => _RestaurantePageState();
 }
@@ -26,27 +26,27 @@ class _RestaurantePageState extends State<RestaurantePage> {
   }
 
   getProdutosCategoria() {
-    
-    final produtosIds = widget.restaurante.produtos;
-    Map<String, List<ProdutoModel>> produtosCategoria = {};
+    try {
+      final produtos = ProdutosRepository.listaProdutos.where(
+        (element) => element.empresaId == widget.restaurante.id,
+      );
 
-    for (var produtoId in produtosIds) {
-      try {
-        ProdutoModel? produto = ProdutosRepository.listaProdutos.firstWhere(
-          (element) => element.id == produtoId,
-        );
-
-        if (produto != null) {
-          produtosCategoria
-              .putIfAbsent(produto.categoria.name, () => [])
-              .add(produto);
-        }
-      } catch (e) {
-        continue;
+      if(produtos.isEmpty){
+        return null;
       }
-    }
 
-    return produtosCategoria;
+      Map<String, List<ProdutoModel>> produtosCategoria = {};
+
+      for (var produto in produtos) {
+        produtosCategoria
+            .putIfAbsent(produto.categoria.name, () => [])
+            .add(produto);
+      }
+
+      return produtosCategoria;
+    } catch (e) {
+      return null;
+    }
   }
 
   @override
@@ -54,17 +54,22 @@ class _RestaurantePageState extends State<RestaurantePage> {
     final produtosCategoria = getProdutosCategoria();
 
     return Scaffold(
-      appBar: AppBar(actions: [Padding(
-                padding: const EdgeInsets.only(right: 20.0, bottom: 10),
-                child: AppIconButtomComponent(
-                  icon: AppAssets.bagIcon,
-                  backgroundColor: AppColors.darkColor,
-                  color: AppColors.textWhiteColor,
-                  width: 55,
-                  iconWidth: 30,
-                  function: () => Navigator.of(context).pushNamed(AppRoutes.carrinho),
-                ),
-              )],),
+      appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0, bottom: 10),
+            child: AppIconButtomComponent(
+              icon: AppAssets.bagIcon,
+              backgroundColor: AppColors.darkColor,
+              color: AppColors.textWhiteColor,
+              width: 55,
+              iconWidth: 30,
+              function: () =>
+                  Navigator.of(context).pushNamed(AppRoutes.carrinho),
+            ),
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
@@ -111,12 +116,38 @@ class _RestaurantePageState extends State<RestaurantePage> {
                   _iconText(AppAssets.watchIcon, widget.restaurante.tempo),
                 ],
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: produtosCategoria.entries
-                    .map<Widget>((entry) => ProdutoWidget(model: entry))
-                    .toList(),
-              )
+              Builder(builder: (context) {
+                if (produtosCategoria != null) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: produtosCategoria.entries
+                        .map<Widget>((entry) => ProdutoWidget(model: entry))
+                        .toList(),
+                  );
+                } else {
+                  return Container(
+                    alignment: Alignment.center,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        SvgPicture.asset(
+                          AppAssets.notFoundIcon,
+                          width: 100,
+                        ),
+                        Text(
+                          'Nenhum produto encontrado!',
+                          style: AppFonts.regularLarge
+                              .copyWith(color: AppColors.darkColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              })
             ],
           ),
         ),

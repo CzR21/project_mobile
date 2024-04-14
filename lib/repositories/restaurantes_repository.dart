@@ -16,7 +16,6 @@ class RestauranteRepository {
           nota: 4.5,
           descricao:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum purus, venenatis porttitor tincidunt a, ultricies id dui.',
-          produtos: ['1', '9', '6'],
         ),
         RestauranteModel(
           id: 'a24dd5a1-8fad-4d13-8a6a-3e9e06e8cf54',
@@ -28,7 +27,6 @@ class RestauranteRepository {
           nota: 4.2,
           descricao:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum purus, venenatis porttitor tincidunt a, ultricies id dui.',
-          produtos: ['2', '11'],
         ),
         RestauranteModel(
           id: 'ec53751b-6517-44d1-b465-934eff65658a',
@@ -40,7 +38,6 @@ class RestauranteRepository {
           nota: 4.8,
           descricao:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum purus, venenatis porttitor tincidunt a, ultricies id dui.',
-          produtos: ['3', '13'],
         ),
         RestauranteModel(
           id: '487c0902-4932-49cd-9ca0-51f4fe7b42a5',
@@ -52,7 +49,6 @@ class RestauranteRepository {
           nota: 4.0,
           descricao:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum purus, venenatis porttitor tincidunt a, ultricies id dui.',
-          produtos: ['1', '6', '10'],
         ),
         RestauranteModel(
           id: '453a7d24-3116-4afa-9c6b-d06b85c33ed1',
@@ -64,7 +60,6 @@ class RestauranteRepository {
           nota: 4.6,
           descricao:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum purus, venenatis porttitor tincidunt a, ultricies id dui.',
-          produtos: ['1', '6', '10'],
         ),
         RestauranteModel(
           id: 'a2f40cac-cb99-4049-84fe-473a3d590ded',
@@ -76,7 +71,6 @@ class RestauranteRepository {
           nota: 4.3,
           descricao:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum purus, venenatis porttitor tincidunt a, ultricies id dui.',
-          produtos: ['1', '6', '10'],
         ),
         RestauranteModel(
           id: '1d9ba73e-75c6-4b9b-a821-4ac02a286209',
@@ -88,7 +82,6 @@ class RestauranteRepository {
           nota: 4.7,
           descricao:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum purus, venenatis porttitor tincidunt a, ultricies id dui.',
-          produtos: ['4', '7', '12'],
         ),
         RestauranteModel(
           id: '29763702-33dc-4318-ac82-73f19b8398eb',
@@ -100,7 +93,6 @@ class RestauranteRepository {
           nota: 4.9,
           descricao:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum purus, venenatis porttitor tincidunt a, ultricies id dui.',
-          produtos: ['8', '14'],
         ),
         RestauranteModel(
           id: 'b1fcf79e-f21b-4f7f-9edf-9d87f26d6e2b',
@@ -112,7 +104,6 @@ class RestauranteRepository {
           nota: 4.4,
           descricao:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum purus, venenatis porttitor tincidunt a, ultricies id dui.',
-          produtos: ['9'],
         ),
         RestauranteModel(
           id: '1902c775-befa-4913-aeff-af20fea13910',
@@ -124,7 +115,6 @@ class RestauranteRepository {
           nota: 4.6,
           descricao:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum purus, venenatis porttitor tincidunt a, ultricies id dui.',
-          produtos: ['2', '11'],
         ),
       ];
     } on DioException {

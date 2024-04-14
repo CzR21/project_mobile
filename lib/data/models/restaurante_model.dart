@@ -21,7 +21,6 @@ class RestauranteModel{
   String image;
   double nota;
   String descricao;
-  List<String> produtos;
 
   RestauranteModel({
     required this.id,
@@ -32,7 +31,6 @@ class RestauranteModel{
     required this.image,
     required this.nota,
     required this.descricao,
-    required this.produtos,    
   });
 
   String get categoriasString{
