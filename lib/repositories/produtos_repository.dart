@@ -7,7 +7,7 @@ class ProdutosRepository {
       nome: 'Coca-Cola Lata',
       preco: 4.0,
       descricao: '350ml',
-      imagem: 'coca_cola.png',
+      imagem: 'coca_cola_350.png',
       categoria: CategoriaProduto.Bebida,
     ),
     ProdutoModel(
@@ -15,7 +15,7 @@ class ProdutosRepository {
       nome: 'Tempura de Legumes',
       preco: 12.50,
       descricao: 'Porção',
-      imagem: 'tempura.png',
+      imagem: 'tempura_de_legumes.jpg',
       categoria: CategoriaProduto.Lanche,
     ),
     ProdutoModel(
@@ -23,7 +23,7 @@ class ProdutosRepository {
       nome: 'Sashimi de Salmão',
       preco: 18.75,
       descricao: 'Porção',
-      imagem: 'sashimi.png',
+      imagem: 'sashimi.jpg',
       categoria: CategoriaProduto.Sushi,
     ),
     ProdutoModel(
@@ -31,7 +31,7 @@ class ProdutosRepository {
       nome: 'Mochi de Morango',
       preco: 8.99,
       descricao: 'Porção',
-      imagem: 'mochi.png',
+      imagem: 'mochi.jpg',
       categoria: CategoriaProduto.Sobremesa,
     ),
     ProdutoModel(
@@ -39,7 +39,7 @@ class ProdutosRepository {
       nome: 'Hambúrguer',
       preco: 15.99,
       descricao: 'Porção',
-      imagem: 'hamburguer.png',
+      imagem: 'hamburguer.jpg',
       categoria: CategoriaProduto.Refeicao,
     ),
     ProdutoModel(
@@ -47,7 +47,7 @@ class ProdutosRepository {
       nome: 'Água Mineral',
       preco: 2.50,
       descricao: '500ml',
-      imagem: 'agua_mineral.png',
+      imagem: 'agua.png',
       categoria: CategoriaProduto.Bebida,
     ),
     ProdutoModel(
@@ -55,7 +55,7 @@ class ProdutosRepository {
       nome: 'Cheesecake de Morango',
       preco: 10.50,
       descricao: 'Fatia',
-      imagem: 'cheesecake.png',
+      imagem: 'cheesecake_morango.jpg',
       categoria: CategoriaProduto.Sobremesa,
     ),
     ProdutoModel(
@@ -63,7 +63,7 @@ class ProdutosRepository {
       nome: 'Cone de Sorvete de Chocolate',
       preco: 5.99,
       descricao: 'sorvete',
-      imagem: 'sorvete_chocolate.png',
+      imagem: 'sorvete_chocolate.jpg',
       categoria: CategoriaProduto.Sorvete,
     ),
     ProdutoModel(
@@ -71,7 +71,7 @@ class ProdutosRepository {
       nome: 'Pizza de Pepperoni',
       preco: 22.99,
       descricao: 'Pizza Inteira',
-      imagem: 'pizza_pepperoni.png',
+      imagem: 'pizza_pepperoni.jpg',
       categoria: CategoriaProduto.Refeicao,
     ),
     ProdutoModel(
@@ -79,7 +79,7 @@ class ProdutosRepository {
       nome: 'Suco de Laranja Natural',
       preco: 4.50,
       descricao: '300ml',
-      imagem: 'suco_laranja.png',
+      imagem: 'suco_laranja.jpg',
       categoria: CategoriaProduto.Bebida,
     ),
     ProdutoModel(
@@ -87,7 +87,7 @@ class ProdutosRepository {
       nome: 'Sanduíche de Frango Grelhado',
       preco: 11.99,
       descricao: 'Porção',
-      imagem: 'sanduiche_frango.png',
+      imagem: 'sanduiche_frango_grelhado.png',
       categoria: CategoriaProduto.Lanche,
     ),
     ProdutoModel(
@@ -95,7 +95,7 @@ class ProdutosRepository {
       nome: 'Brownie de Chocolate',
       preco: 7.99,
       descricao: 'Porção',
-      imagem: 'brownie.png',
+      imagem: 'brownie.jpg',
       categoria: CategoriaProduto.Sobremesa,
     ),
     ProdutoModel(
@@ -103,7 +103,7 @@ class ProdutosRepository {
       nome: 'Temaki de Atum',
       preco: 14.25,
       descricao: 'Porção',
-      imagem: 'temaki_atum.png',
+      imagem: 'temaki_atum.jpg',
       categoria: CategoriaProduto.Sushi,
     ),
     ProdutoModel(
@@ -111,7 +111,7 @@ class ProdutosRepository {
       nome: 'Creme de Baunilha',
       preco: 6.99,
       descricao: 'sorvete',
-      imagem: 'creme_baunilha.png',
+      imagem: 'sorvete_creme.jpg',
       categoria: CategoriaProduto.Sorvete,
     ),
     ProdutoModel(
@@ -119,7 +119,7 @@ class ProdutosRepository {
       nome: 'Yakissoba de Frango',
       preco: 17.50,
       descricao: 'Porção',
-      imagem: 'yakissoba.png',
+      imagem: 'yakissoba_frango.jpg',
       categoria: CategoriaProduto.Refeicao,
     ),
   ];
