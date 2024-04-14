@@ -1,10 +1,10 @@
 enum CategoriaProduto{
-  lanche,
-  sushi,
-  bebida,
-  sobremesa,
-  sorvete,
-  refeicao,
+  Lanche,
+  Sushi,
+  Bebida,
+  Sobremesa,
+  Sorvete,
+  Refeicao,
 }
 
 
