@@ -29,7 +29,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
       preco: 7.99,
       descricao: 'Porção',
       imagem: 'brownie.png',
-      categoria: CategoriaProduto.sobremesa,
+      categoria: CategoriaProduto.Sobremesa,
     ),
     ProdutoModel(
       id: '13',
@@ -37,7 +37,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
       preco: 14.25,
       descricao: 'Porção',
       imagem: 'temaki_atum.png',
-      categoria: CategoriaProduto.sushi,
+      categoria: CategoriaProduto.Sushi,
     ),
     ProdutoModel(
       id: '14',
@@ -45,7 +45,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
       preco: 6.99,
       descricao: 'sorvete',
       imagem: 'creme_baunilha.png',
-      categoria: CategoriaProduto.sorvete,
+      categoria: CategoriaProduto.Sorvete,
     ),
     ProdutoModel(
       id: '15',
@@ -53,7 +53,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
       preco: 17.50,
       descricao: 'Porção',
       imagem: 'yakissoba.png',
-      categoria: CategoriaProduto.refeicao,
+      categoria: CategoriaProduto.Refeicao,
     ),
   ];
 

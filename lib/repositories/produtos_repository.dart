@@ -8,7 +8,7 @@ class ProdutosRepository {
       preco: 4.0,
       descricao: '350ml',
       imagem: 'coca_cola.png',
-      categoria: CategoriaProduto.bebida,
+      categoria: CategoriaProduto.Bebida,
     ),
     ProdutoModel(
       id: '2',
@@ -16,7 +16,7 @@ class ProdutosRepository {
       preco: 12.50,
       descricao: 'Porção',
       imagem: 'tempura.png',
-      categoria: CategoriaProduto.lanche,
+      categoria: CategoriaProduto.Lanche,
     ),
     ProdutoModel(
       id: '3',
@@ -24,7 +24,7 @@ class ProdutosRepository {
       preco: 18.75,
       descricao: 'Porção',
       imagem: 'sashimi.png',
-      categoria: CategoriaProduto.sushi,
+      categoria: CategoriaProduto.Sushi,
     ),
     ProdutoModel(
       id: '4',
@@ -32,7 +32,7 @@ class ProdutosRepository {
       preco: 8.99,
       descricao: 'Porção',
       imagem: 'mochi.png',
-      categoria: CategoriaProduto.sobremesa,
+      categoria: CategoriaProduto.Sobremesa,
     ),
     ProdutoModel(
       id: '5',
@@ -40,7 +40,7 @@ class ProdutosRepository {
       preco: 15.99,
       descricao: 'Porção',
       imagem: 'hamburguer.png',
-      categoria: CategoriaProduto.refeicao,
+      categoria: CategoriaProduto.Refeicao,
     ),
     ProdutoModel(
       id: '6',
@@ -48,7 +48,7 @@ class ProdutosRepository {
       preco: 2.50,
       descricao: '500ml',
       imagem: 'agua_mineral.png',
-      categoria: CategoriaProduto.bebida,
+      categoria: CategoriaProduto.Bebida,
     ),
     ProdutoModel(
       id: '7',
@@ -56,15 +56,15 @@ class ProdutosRepository {
       preco: 10.50,
       descricao: 'Fatia',
       imagem: 'cheesecake.png',
-      categoria: CategoriaProduto.sobremesa,
+      categoria: CategoriaProduto.Sobremesa,
     ),
     ProdutoModel(
       id: '8',
-      nome: 'Cone de sorvete de Chocolate',
+      nome: 'Cone de Sorvete de Chocolate',
       preco: 5.99,
       descricao: 'sorvete',
       imagem: 'sorvete_chocolate.png',
-      categoria: CategoriaProduto.sorvete,
+      categoria: CategoriaProduto.Sorvete,
     ),
     ProdutoModel(
       id: '9',
@@ -72,7 +72,7 @@ class ProdutosRepository {
       preco: 22.99,
       descricao: 'Pizza Inteira',
       imagem: 'pizza_pepperoni.png',
-      categoria: CategoriaProduto.refeicao,
+      categoria: CategoriaProduto.Refeicao,
     ),
     ProdutoModel(
       id: '10',
@@ -80,7 +80,7 @@ class ProdutosRepository {
       preco: 4.50,
       descricao: '300ml',
       imagem: 'suco_laranja.png',
-      categoria: CategoriaProduto.bebida,
+      categoria: CategoriaProduto.Bebida,
     ),
     ProdutoModel(
       id: '11',
@@ -88,7 +88,7 @@ class ProdutosRepository {
       preco: 11.99,
       descricao: 'Porção',
       imagem: 'sanduiche_frango.png',
-      categoria: CategoriaProduto.lanche,
+      categoria: CategoriaProduto.Lanche,
     ),
     ProdutoModel(
       id: '12',
@@ -96,7 +96,7 @@ class ProdutosRepository {
       preco: 7.99,
       descricao: 'Porção',
       imagem: 'brownie.png',
-      categoria: CategoriaProduto.sobremesa,
+      categoria: CategoriaProduto.Sobremesa,
     ),
     ProdutoModel(
       id: '13',
@@ -104,7 +104,7 @@ class ProdutosRepository {
       preco: 14.25,
       descricao: 'Porção',
       imagem: 'temaki_atum.png',
-      categoria: CategoriaProduto.sushi,
+      categoria: CategoriaProduto.Sushi,
     ),
     ProdutoModel(
       id: '14',
@@ -112,7 +112,7 @@ class ProdutosRepository {
       preco: 6.99,
       descricao: 'sorvete',
       imagem: 'creme_baunilha.png',
-      categoria: CategoriaProduto.sorvete,
+      categoria: CategoriaProduto.Sorvete,
     ),
     ProdutoModel(
       id: '15',
@@ -120,7 +120,7 @@ class ProdutosRepository {
       preco: 17.50,
       descricao: 'Porção',
       imagem: 'yakissoba.png',
-      categoria: CategoriaProduto.refeicao,
+      categoria: CategoriaProduto.Refeicao,
     ),
   ];
 }
