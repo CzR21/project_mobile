@@ -237,16 +237,16 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _login(Tipologin tipologin) async {
-    // var validateEmail = _emailFormkey.currentState!.validate();
-    // var validatePassword = _passwordFormkey.currentState!.validate();
+    var validateEmail = _emailFormkey.currentState!.validate();
+    var validatePassword = _passwordFormkey.currentState!.validate();
 
-    // if(validateEmail && validatePassword){
-    //TODO: Implementar login
-    setState(() => loadingLogin = true);
-    await Future.delayed(const Duration(seconds: 2)).then((value) {
-      setState(() => loadingLogin = false);
-      Navigator.of(context).pushReplacementNamed(AppRoutes.home);
-    });
-    // }
+    if (validateEmail && validatePassword) {
+      //TODO: Implementar login
+      setState(() => loadingLogin = true);
+      await Future.delayed(const Duration(seconds: 2)).then((value) {
+        setState(() => loadingLogin = false);
+        Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+      });
+    }
   }
 }
