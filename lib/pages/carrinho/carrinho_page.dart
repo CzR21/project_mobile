@@ -28,7 +28,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
       nome: 'Brownie de Chocolate',
       preco: 7.99,
       descricao: 'Porção',
-      imagem: 'brownie.png',
+      imagem: 'brownie.jpg',
       categoria: CategoriaProduto.Sobremesa,
     ),
     ProdutoModel(
@@ -36,7 +36,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
       nome: 'Temaki de Atum',
       preco: 14.25,
       descricao: 'Porção',
-      imagem: 'temaki_atum.png',
+      imagem: 'temaki_atum.jpg',
       categoria: CategoriaProduto.Sushi,
     ),
     ProdutoModel(
@@ -44,7 +44,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
       nome: 'Creme de Baunilha',
       preco: 6.99,
       descricao: 'sorvete',
-      imagem: 'creme_baunilha.png',
+      imagem: 'sorvete_creme.jpg',
       categoria: CategoriaProduto.Sorvete,
     ),
     ProdutoModel(
@@ -52,7 +52,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
       nome: 'Yakissoba de Frango',
       preco: 17.50,
       descricao: 'Porção',
-      imagem: 'yakissoba.png',
+      imagem: 'yakissoba_frango.jpeg',
       categoria: CategoriaProduto.Refeicao,
     ),
   ];
@@ -193,7 +193,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
               color: AppColors.darkColor,
               borderRadius: BorderRadius.circular(20)
             ),
-            child: Image.asset('assets/images/${model.imagem}'),
+            child: Image.asset('assets/images/produto/${model.imagem}'),
           ),
           const SizedBox(width: 20,),
           SizedBox(

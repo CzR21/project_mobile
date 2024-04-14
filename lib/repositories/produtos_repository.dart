@@ -119,7 +119,7 @@ class ProdutosRepository {
       nome: 'Yakissoba de Frango',
       preco: 17.50,
       descricao: 'Porção',
-      imagem: 'yakissoba_frango.jpg',
+      imagem: 'yakissoba_frango.jpeg',
       categoria: CategoriaProduto.Refeicao,
     ),
   ];

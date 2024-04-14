@@ -1,9 +1,11 @@
 import "package:flutter/material.dart";
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:project_mobile/components/buttons/app_icon_buttom_component.dart';
 import 'package:project_mobile/config/app_assets.dart';
 import 'package:project_mobile/config/app_colors.dart';
 import 'package:project_mobile/config/app_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:project_mobile/config/app_routes.dart';
 import 'package:project_mobile/data/models/produto_model.dart';
 import "package:project_mobile/data/models/restaurante_model.dart";
 import 'package:project_mobile/pages/restaurante/widgets/produtos_widget.dart';
@@ -52,7 +54,17 @@ class _RestaurantePageState extends State<RestaurantePage> {
     final produtosCategoria = getProdutosCategoria();
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(actions: [Padding(
+                padding: const EdgeInsets.only(right: 20.0, bottom: 10),
+                child: AppIconButtomComponent(
+                  icon: AppAssets.bagIcon,
+                  backgroundColor: AppColors.darkColor,
+                  color: AppColors.textWhiteColor,
+                  width: 55,
+                  iconWidth: 30,
+                  function: () => Navigator.of(context).pushNamed(AppRoutes.carrinho),
+                ),
+              )],),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),

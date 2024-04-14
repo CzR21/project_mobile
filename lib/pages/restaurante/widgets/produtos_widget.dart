@@ -43,7 +43,7 @@ class _ProdutoWidgetState extends State<ProdutoWidget> {
                     child: Container(
                       height: 100,
                       decoration: BoxDecoration(
-                        color: const Color(0xffA0A5BA),
+                        image: DecorationImage(image: AssetImage("assets/images/produto/${widget.model.value[index].imagem}")),
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
@@ -71,7 +71,7 @@ class _ProdutoWidgetState extends State<ProdutoWidget> {
                         iconSize: 20,
                         onPressed: () {
                           // TODO: adicionar ao carrinho direto e informar o usuário que foi adicionado
-
+                          
                         },
                       ),
                     ],
