@@ -1,14 +1,14 @@
 import 'package:project_mobile/data/models/produto_model.dart';
 
 enum Categoria{
-  Pizza,
-  Lanche,
-  Japonesa,
-  Arabe,
-  Brasileira,
-  Pastel,
-  Doces,
-  Sorvete,
+  pizza,
+  hamburguer,
+  japonesa,
+  bebidas,
+  brasileira,
+  pastel,
+  doces,
+  sorvetes,
 }
 
 class RestauranteModel{

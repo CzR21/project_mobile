@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:project_mobile/repositories/restaurantes_repository.dart';
 import '../../data/models/erro_model.dart';
+import '../../data/models/restaurante_model.dart';
 import 'restaurante_state.dart';
 
 part 'restaurante_event.dart';
@@ -16,6 +17,10 @@ class RestauranteBloc extends Bloc<RestauranteEvent, RestauranteState> {
 
         if(event.search != null && event.search!.isNotEmpty){
           restaurantes = restaurantes.where((e) => e.nome.toLowerCase().contains(event.search!.toLowerCase()),).toList();
+        }
+
+        if(event.categorias != null && event.categorias!.isNotEmpty){
+          restaurantes = restaurantes.where((e) => e.categorias.any((categoria) => event.categorias!.contains(categoria))).toList();
         }
 
         emit(SuccessGetPrincipaisRestaurantesState(model: restaurantes));

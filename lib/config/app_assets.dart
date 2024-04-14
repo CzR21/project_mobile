@@ -53,5 +53,8 @@ class AppAssets{
     static const String facebookIcon = "$_iconsPath/facebook.svg";
     static const String twitterIcon = "$_iconsPath/twitter.svg";
     static const String notFoundIcon = "$_iconsPath/not-found.svg";
+    static const String successIcon = "$_iconsPath/success.svg";
+    static const String warningIcon = "$_iconsPath/warning.svg";
+    static const String errorIcon = "$_iconsPath/error.svg";
 }
 

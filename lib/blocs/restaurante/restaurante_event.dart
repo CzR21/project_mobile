@@ -6,8 +6,10 @@ abstract class RestauranteEvent {}
 class GetPrincipaisRestaurantesEvent extends RestauranteEvent {
 
   String? search;
+  List<Categoria>? categorias;
 
   GetPrincipaisRestaurantesEvent({
-    this.search
+    this.search,
+    this.categorias,
   });
 }

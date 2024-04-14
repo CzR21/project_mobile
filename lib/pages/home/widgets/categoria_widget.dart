@@ -1,17 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_mobile/config/app_colors.dart';
 import 'package:project_mobile/config/app_fonts.dart';
+import 'package:project_mobile/data/models/categoria_model.dart';
 
 class CategoriaWidget extends StatelessWidget {
 
-  final String nome;
-  final String image;
+  final CategoriaModel model;
 
   const CategoriaWidget({
     super.key,
-    required this.nome,
-    required this.image
+    required this.model,
   });
 
   @override
@@ -34,40 +34,32 @@ class CategoriaWidget extends StatelessWidget {
               ),
             ]
           ),
-          child: Container(
-            padding: const EdgeInsets.all(30),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
             decoration: BoxDecoration(
-              color: backgroundColor,
+              color: model.backgroundColor.withOpacity(model.select ? 0.9 : 0.5),
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: SvgPicture.asset(
-                image,
-                height: 20,
-                fit: BoxFit.fill,
+            child: Padding(
+              padding: const EdgeInsets.all(30),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: SvgPicture.asset(
+                  model.image,
+                  height: 20,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
           ),
         ),
         const SizedBox(height: 15,),
-        Text(nome, style: AppFonts.subTitleBold.copyWith(color: AppColors.textDarkColor, fontSize: 18),)
+        Text(model.nome, style: AppFonts.subTitleBold.copyWith(color: model.select ? model.backgroundColor.withOpacity(1) : AppColors.textDarkColor, fontSize: 18),)
       ],
     );
   }
 
-  Color get backgroundColor{
-    switch(nome) {
-      case 'Pizza': return AppColors.liteYellowColor;
-      case 'Lanche': return AppColors.liteOrangeColor;
-      case 'Japonesa': return AppColors.liteReColor ;
-      case 'Brasileira': return AppColors.liteGreenColor;
-      case 'Bebidas': return AppColors.liteLiteBlueColor;
-      case 'Doces': return AppColors.liteBlueColor;
-      case 'Sorvete': return AppColors.litePurpleColor;
-      default: return AppColors.backgroundColor;
-    }
-  }
+
 }

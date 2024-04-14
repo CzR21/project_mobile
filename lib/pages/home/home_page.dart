@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:project_mobile/blocs/restaurante/restaurante_bloc.dart';
 import 'package:project_mobile/config/app_mock.dart';
 import 'package:project_mobile/config/app_routes.dart';
+import 'package:project_mobile/data/models/categoria_model.dart';
 import 'package:project_mobile/data/models/endereco_model.dart';
 import 'package:project_mobile/helpers/bottom_sheet_helper.dart';
 import 'package:project_mobile/pages/home/widgets/endereco_bottom_sheet.dart';
@@ -30,15 +31,15 @@ class _HomePageState extends State<HomePage> {
 
   final TextEditingController _searchController = TextEditingController();
 
-  final Map<String, String> _categorias = {
-    'Pizza': AppAssets.pizzaImage,
-    'Lanche': AppAssets.hamburguerImage,
-    'Japonesa': AppAssets.japonesaImage,
-    'Brasileira': AppAssets.brasileiraImage,
-    'Bebidas': AppAssets.bebidasImage,
-    'Doces': AppAssets.boloImage,
-    'Sorvete': AppAssets.sorveteImage,
-  };
+  final List<CategoriaModel> _categorias = [
+    CategoriaModel(Categoria.pizza),
+    CategoriaModel(Categoria.hamburguer),
+    CategoriaModel(Categoria.japonesa),
+    CategoriaModel(Categoria.brasileira),
+    CategoriaModel(Categoria.bebidas),
+    CategoriaModel(Categoria.doces),
+    CategoriaModel(Categoria.sorvetes),
+  ];
 
   List<RestauranteModel> _restaurantes = List.empty(growable: true);
 
@@ -143,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                   controller: _searchController,
                   hint: 'Pesquisar',
                   prefixIcon: AppAssets.searchIcon,
-                  onEdit: (value) => _restauranteBloc.add(GetPrincipaisRestaurantesEvent(search: value)),
+                  onEdit: (value) => _atualizaLista(),
                 ),
 
                 const SizedBox(height: 40,),
@@ -155,9 +156,12 @@ class _HomePageState extends State<HomePage> {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: _categorias.entries.map((entry) => Padding(
+                    children: _categorias.map((entry) => Padding(
                       padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-                      child: CategoriaWidget(nome: entry.key, image: entry.value,),
+                      child: GestureDetector(
+                        onTap: () => _selectRestaurante(entry),
+                        child: CategoriaWidget(model: entry,),
+                      ),
                     )).toList()
                   ),
                 ),
@@ -207,5 +211,14 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  _selectRestaurante(CategoriaModel model){
+    setState(() => model.select = !model.select);
+    _atualizaLista();
+  }
+
+  void _atualizaLista(){
+    _restauranteBloc.add(GetPrincipaisRestaurantesEvent(search: _searchController.text, categorias: _categorias.where((e) => e.select).map((e) => e.categoria).toList()));
   }
 }
