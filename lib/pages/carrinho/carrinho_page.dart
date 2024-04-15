@@ -10,11 +10,8 @@ import 'package:project_mobile/data/models/carrinho_model.dart';
 import 'package:project_mobile/helpers/bottom_sheet_helper.dart';
 import 'package:project_mobile/helpers/converter_helper.dart';
 import 'package:project_mobile/pages/home/widgets/endereco_bottom_sheet.dart';
-import 'package:project_mobile/repositories/carrinho_repository.dart';
-import 'package:project_mobile/repositories/produtos_repository.dart';
 import 'package:provider/provider.dart';
 import '../../data/models/endereco_model.dart';
-import '../../data/models/produto_model.dart';
 
 class CarrinhoPage extends StatefulWidget {
   const CarrinhoPage({Key? key}) : super(key: key);
@@ -23,27 +20,15 @@ class CarrinhoPage extends StatefulWidget {
   State<CarrinhoPage> createState() => _CarrinhoPageState();
 }
 
-List<CarrinhoModel> getItensCarrinho() {
-  List<CarrinhoModel> carrinhoRep = CarrinhoRepository.listaCarrinho;
-
-  for (var carrinho in carrinhoRep) {
-    carrinho.produto = ProdutosRepository.listaProdutos.firstWhere(
-      (produto) => carrinho.produtoId == produto.id,
-    );
-  }
-
-  return carrinhoRep;
-}
 
 class _CarrinhoPageState extends State<CarrinhoPage> {
-  List<CarrinhoModel> carrinho = getItensCarrinho();
-
+  late List<CarrinhoModel> _carrinho;
   late EnderecoModel _endereco;
 
   double _calcularTotal() {
     double total = 0;
 
-    carrinho.forEach((element) => total += element.produto != null
+    _carrinho.forEach((element) => total += element.produto != null
         ? (element.produto!.preco * element.quantidade)
         : 0);
 
@@ -58,7 +43,8 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
   @override
   Widget build(BuildContext context) {
     _endereco = Provider.of<AppMock>(context).endereco;
-
+    _carrinho = Provider.of<AppMock>(context).carrinho;
+    
     return Scaffold(
       backgroundColor: AppColors.bgDarkColor,
       body: Column(
@@ -99,7 +85,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: [...carrinho.map((e) => _buildProduto(e))],
+                  children: [..._carrinho.map((e) => _buildProduto(e))],
                 ),
               ),
             ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:project_mobile/config/app_mock.dart';
 import 'package:project_mobile/data/models/carrinho_model.dart';
-import 'package:project_mobile/data/models/produto_model.dart';
-import 'package:project_mobile/repositories/carrinho_repository.dart';
+import 'package:project_mobile/helpers/toasty_helper.dart';
+import 'package:provider/provider.dart';
 
 class ProdutoWidget extends StatefulWidget {
   final model;
@@ -76,18 +76,20 @@ class _ProdutoWidgetState extends State<ProdutoWidget> {
                         onPressed: () {
                           // TODO: informar o usuário que foi adicionado
                           setState(() {
-                            List<CarrinhoModel> carrinho =
-                                CarrinhoRepository.listaCarrinho;
+                            
+                            var provider = Provider.of<AppMock>(context);
+                            var carrinho = provider.carrinho;
                             String newProduto = widget.model.value[index].id;
 
                             try {
                               final filter = carrinho.firstWhere((element) => element.produtoId == newProduto);
                               filter.quantidade++;
                             } catch (e) {
+                              print(e);
                               String lastId = carrinho.isNotEmpty
                                   ? carrinho[carrinho.length - 1].id
                                   : '0';
-                              CarrinhoRepository.listaCarrinho.add(
+                              provider.addCarrinho(
                                 CarrinhoModel(
                                   id: "${int.parse(lastId) + 1}",
                                   produtoId: newProduto,
@@ -96,6 +98,8 @@ class _ProdutoWidgetState extends State<ProdutoWidget> {
                               );
                             }
                           });
+
+                          ToastHelper.showMessage(context: context, messageType: MessageType.success , message: 'Produto adicionado ao carrinho!');
                         },
                       ),
                     ],
