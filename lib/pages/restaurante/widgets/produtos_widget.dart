@@ -77,7 +77,7 @@ class _ProdutoWidgetState extends State<ProdutoWidget> {
                           // TODO: informar o usuário que foi adicionado
                           setState(() {
                             
-                            var provider = Provider.of<AppMock>(context);
+                            var provider = Provider.of<AppMock>(context, listen: false);
                             var carrinho = provider.carrinho;
                             String newProduto = widget.model.value[index].id;
 
