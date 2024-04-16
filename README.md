@@ -44,6 +44,7 @@ Para instalar o Flutter, siga as instruções em [flutter.dev](https://flutter.d
 
 `flutter run`
 
+
 ## Contribuições
 O projeto "Food APP" é de código aberto e aceita contribuições da comunidade. Se você deseja contribuir, sinta-se à vontade para abrir uma issue ou enviar um pull request no repositório do GitHub.
 
@@ -51,6 +52,22 @@ O projeto "Food APP" é de código aberto e aceita contribuições da comunidade
 - **César Arandas Silva** - [@CzR21](https://github.com/CzR21)
 - **Maria Eduarda Macedo** - [@Dudah147](https://github.com/Dudah147)
 - **Murilo Matheus Ruiz** - [@Murilek](https://github.com/Murilek)
+
+## Atividades:
+**César Arandas Silva**  
+* Criação da estrutura e configurações do projeto;  
+* Telas de login e cadastros;
+* Tela de home e filtros de restaurantes;
+* Provider de endereço;
+
+**Maria Eduarda Macedo**   
+* Pagina de restaurante;
+* Criação dos assets;
+* Provider de produtos do carrinho;
+    
+**Murilo Matheus Ruiz** 
+* Tela de carrinho
+* Documentação do projeto
 
 ## Licença
 Este projeto é licenciado sob a [MIT License](https://opensource.org/licenses/MIT).
