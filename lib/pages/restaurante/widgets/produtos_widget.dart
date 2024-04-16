@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_mobile/config/app_mock.dart';
 import 'package:project_mobile/data/models/carrinho_model.dart';
+import 'package:project_mobile/data/models/produto_model.dart';
 import 'package:project_mobile/helpers/toasty_helper.dart';
 import 'package:provider/provider.dart';
 
@@ -79,10 +80,10 @@ class _ProdutoWidgetState extends State<ProdutoWidget> {
                             
                             var provider = Provider.of<AppMock>(context, listen: false);
                             var carrinho = provider.carrinho;
-                            String newProduto = widget.model.value[index].id;
+                            ProdutoModel newProduto = widget.model.value[index];
 
                             try {
-                              final filter = carrinho.firstWhere((element) => element.produtoId == newProduto);
+                              final filter = carrinho.firstWhere((element) => element.produto == newProduto);
                               filter.quantidade++;
                             } catch (e) {
                               print(e);
@@ -92,7 +93,7 @@ class _ProdutoWidgetState extends State<ProdutoWidget> {
                               provider.addCarrinho(
                                 CarrinhoModel(
                                   id: "${int.parse(lastId) + 1}",
-                                  produtoId: newProduto,
+                                  produto: newProduto,
                                   quantidade: 1,
                                 ),
                               );
