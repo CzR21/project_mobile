@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:project_mobile/components/buttons/app_icon_buttom_component.dart';
@@ -5,11 +6,13 @@ import 'package:project_mobile/config/app_assets.dart';
 import 'package:project_mobile/config/app_colors.dart';
 import 'package:project_mobile/config/app_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:project_mobile/config/app_mock.dart';
 import 'package:project_mobile/config/app_routes.dart';
 import 'package:project_mobile/data/models/produto_model.dart';
 import "package:project_mobile/data/models/restaurante_model.dart";
 import 'package:project_mobile/pages/restaurante/widgets/produtos_widget.dart';
 import 'package:project_mobile/repositories/produtos_repository.dart';
+import 'package:provider/provider.dart';
 
 class RestaurantePage extends StatefulWidget {
   final RestauranteModel restaurante;
@@ -20,6 +23,9 @@ class RestaurantePage extends StatefulWidget {
 }
 
 class _RestaurantePageState extends State<RestaurantePage> {
+
+  late AppMock _provider;
+
   @override
   void initState() {
     super.initState();
@@ -53,19 +59,43 @@ class _RestaurantePageState extends State<RestaurantePage> {
   Widget build(BuildContext context) {
     final produtosCategoria = getProdutosCategoria();
 
+    _provider = Provider.of<AppMock>(context);
+
     return Scaffold(
       appBar: AppBar(
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20.0, bottom: 10),
-            child: AppIconButtomComponent(
-              icon: AppAssets.bagIcon,
-              backgroundColor: AppColors.darkColor,
-              color: AppColors.textWhiteColor,
-              width: 55,
-              iconWidth: 30,
-              function: () =>
-                  Navigator.of(context).pushNamed(AppRoutes.carrinho),
+            padding: const EdgeInsets.only(right: 20.0, ),
+            child: Stack(
+              children: [
+                AppIconButtomComponent(
+                  icon: AppAssets.bagIcon,
+                  backgroundColor: AppColors.darkColor,
+                  color: AppColors.textWhiteColor,
+                  width: 55,
+                  iconWidth: 30,
+                  function: () =>
+                      Navigator.of(context).pushNamed(AppRoutes.carrinho),
+                ),
+
+                Visibility(
+                  visible: _provider.carrinho.length > 0,
+                  child: Positioned(
+                    right: 1,
+                    top: 0,
+                    child: Container(
+                      height: 20,
+                      width: 20,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: AppColors.orangeDarkColor,
+                        borderRadius: BorderRadius.circular(999)
+                      ),
+                    child: Text(_provider.carrinho.length.toString(), style: AppFonts.regularSmall.copyWith(color: AppColors.textWhiteColor),),
+                   )
+                  ),
+                )
+              ],
             ),
           )
         ],

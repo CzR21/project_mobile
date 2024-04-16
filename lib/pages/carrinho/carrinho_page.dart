@@ -9,6 +9,7 @@ import 'package:project_mobile/config/app_mock.dart';
 import 'package:project_mobile/data/models/carrinho_model.dart';
 import 'package:project_mobile/helpers/bottom_sheet_helper.dart';
 import 'package:project_mobile/helpers/converter_helper.dart';
+import 'package:project_mobile/helpers/toasty_helper.dart';
 import 'package:project_mobile/pages/home/widgets/endereco_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import '../../data/models/endereco_model.dart';
@@ -75,7 +76,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
                             .copyWith(color: AppColors.textWhiteColor))),
                 AppTextButtomComponent(
                     text: 'LIMPAR',
-                    function: () => provider.limparCarrinho(),
+                    function: () => _provider.limparCarrinho(),
                     style: AppFonts.linkLarge.copyWith(
                         color: AppColors.textOrangeColor,
                         decorationColor: AppColors.textOrangeColor))
@@ -229,9 +230,10 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
               width: 30,
               function: () {
                 if (model.quantidade > 1) {
-                  _provider.alterarQuantidade(_carrinho.indexOf(model), model.quantidade--);
+                  _provider.alterarQuantidade(_carrinho.indexOf(model), model.quantidade - 1);
                 } else {
                   _provider.removerCarrinho(_carrinho.indexOf(model));
+                  ToastHelper.showMessage(context: context, messageType: MessageType.error, message: "Produto removido com sucesso!");
                 }
               }),
           const SizedBox(

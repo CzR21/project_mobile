@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
   final RestauranteBloc _restauranteBloc = RestauranteBloc();
 
   late EnderecoModel _endereco;
+  late AppMock _provider;
 
   @override
   void initState() {
@@ -55,7 +56,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    _endereco = Provider.of<AppMock>(context, listen: true).endereco;
+    _provider = Provider.of<AppMock>(context, listen: true);
+    _endereco = _provider.endereco;
 
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
@@ -103,13 +105,32 @@ class _HomePageState extends State<HomePage> {
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 20.0, bottom: 10),
-                child: AppIconButtomComponent(
-                  icon: AppAssets.bagIcon,
-                  backgroundColor: AppColors.darkColor,
-                  color: AppColors.textWhiteColor,
-                  width: 55,
-                  iconWidth: 30,
-                  function: () => Navigator.of(context).pushNamed(AppRoutes.carrinho),
+                child: Stack(
+                  children: [
+                    AppIconButtomComponent(
+                      icon: AppAssets.bagIcon,
+                      backgroundColor: AppColors.darkColor,
+                      color: AppColors.textWhiteColor,
+                      width: 55,
+                      iconWidth: 30,
+                      function: () => Navigator.of(context).pushNamed(AppRoutes.carrinho),
+                    ),
+
+                    Positioned(
+                      right: 1,
+                      top: 0,
+                      child: Container(
+                        height: 20,
+                        width: 20,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: AppColors.orangeDarkColor,
+                          borderRadius: BorderRadius.circular(999)
+                        ),
+                        child: Text(_provider.carrinho.length.toString(), style: AppFonts.regularSmall.copyWith(color: AppColors.textWhiteColor),),
+                      )
+                    )
+                  ],
                 ),
               )
             ],
