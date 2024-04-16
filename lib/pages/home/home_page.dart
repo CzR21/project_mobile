@@ -85,23 +85,23 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             backgroundColor: AppColors.backgroundColor,
-            leading: Padding(
-              padding: const EdgeInsets.only(left: 20.0, bottom: 10),
-              child: Container(
-                width: 55,
-                height: 55,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.greyLiteColor, width: 2),
-                  borderRadius: BorderRadius.circular(999),
-                ),
-                child: SvgPicture.asset(
-                  AppAssets.userIcon,
-                  width: 25,
-                  color: AppColors.darkColor,
-                ),
-              ),
-            ),
+            // leading: Padding(
+            //   padding: const EdgeInsets.only(left: 20.0, bottom: 10),
+            //   child: Container(
+            //     width: 55,
+            //     height: 55,
+            //     alignment: Alignment.center,
+            //     decoration: BoxDecoration(
+            //       border: Border.all(color: AppColors.greyLiteColor, width: 2),
+            //       borderRadius: BorderRadius.circular(999),
+            //     ),
+            //     child: SvgPicture.asset(
+            //       AppAssets.userIcon,
+            //       width: 25,
+            //       color: AppColors.darkColor,
+            //     ),
+            //   ),
+            // ),
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 20.0, bottom: 10),
@@ -139,94 +139,97 @@ class _HomePageState extends State<HomePage> {
             toolbarHeight: 65,
           ),
         ],
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    text: "Olá, Nome usuário, ",
-                    style: AppFonts.subTitle2.copyWith(color: AppColors.textDarkColor),
-                    children: [
-                      TextSpan(
-                        text: DateHelper.buscarMensagemDia,
-                        style: AppFonts.subTitle2.copyWith(color: AppColors.textDarkColor, fontWeight: FontWeight.w700),
-                      )
-                    ]
+        body: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: "Olá, Nome usuário, ",
+                      style: AppFonts.subTitle2.copyWith(color: AppColors.textDarkColor),
+                      children: [
+                        TextSpan(
+                          text: DateHelper.buscarMensagemDia,
+                          style: AppFonts.subTitle2.copyWith(color: AppColors.textDarkColor, fontWeight: FontWeight.w700),
+                        )
+                      ]
+                    ),
                   ),
-                ),
 
-                const SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
 
-                AppTextFieldComponent(
-                  controller: _searchController,
-                  hint: 'Pesquisar',
-                  prefixIcon: AppAssets.searchIcon,
-                  onEdit: (value) => _atualizaLista(),
-                ),
-
-                const SizedBox(height: 40,),
-
-                Text('Categorias', style: AppFonts.subTitle.copyWith(color: AppColors.darkColor),),
-
-                const SizedBox(height: 20,),
-
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: _categorias.map((entry) => Padding(
-                      padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-                      child: GestureDetector(
-                        onTap: () => _selectRestaurante(entry),
-                        child: CategoriaWidget(model: entry,),
-                      ),
-                    )).toList()
+                  AppTextFieldComponent(
+                    controller: _searchController,
+                    hint: 'Pesquisar',
+                    prefixIcon: AppAssets.searchIcon,
+                    onEdit: (value) => _atualizaLista(),
                   ),
-                ),
 
-                const SizedBox(height: 40,),
+                  const SizedBox(height: 40,),
 
-                Text('Principais restaurantes', style: AppFonts.subTitle.copyWith(color: AppColors.darkColor),),
+                  Text('Categorias', style: AppFonts.subTitle.copyWith(color: AppColors.darkColor),),
 
-                BlocConsumer<RestauranteBloc, RestauranteState>(
-                  bloc: _restauranteBloc,
-                  listener: (context, state) {
-                    if (state is SuccessGetPrincipaisRestaurantesState) {
-                      setState(() => _restaurantes = state.model);
-                    }
-                  },
-                  builder: (context, state) {
-                    if(state is SuccessGetPrincipaisRestaurantesState){
-                      if(_restaurantes.isEmpty){
-                        return Container(
-                          alignment: Alignment.center,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(height: 50,),
-                              SvgPicture.asset(AppAssets.notFoundIcon, width: 100,),
-                              Text('Nenhum restaurante encontrado!', style: AppFonts.regularLarge.copyWith(color: AppColors.darkColor), textAlign: TextAlign.center,),
-                            ],
-                          ),
-                        );
-                      }else{
-                        return Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: _restaurantes.map((e) => RestauranteWidget(model: e)).toList(),
-                        );
+                  const SizedBox(height: 20,),
+
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: _categorias.map((entry) => Padding(
+                        padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                        child: GestureDetector(
+                          onTap: () => _selectRestaurante(entry),
+                          child: CategoriaWidget(model: entry,),
+                        ),
+                      )).toList()
+                    ),
+                  ),
+
+                  const SizedBox(height: 40,),
+
+                  Text('Principais restaurantes', style: AppFonts.subTitle.copyWith(color: AppColors.darkColor),),
+
+                  BlocConsumer<RestauranteBloc, RestauranteState>(
+                    bloc: _restauranteBloc,
+                    listener: (context, state) {
+                      if (state is SuccessGetPrincipaisRestaurantesState) {
+                        setState(() => _restaurantes = state.model);
                       }
-                    }else if(state is ErrorGetPrincipaisRestaurantesState){
-                      //TODO: Tratar erro dps
-                      return Text('Erro!', style: AppFonts.subTitle.copyWith(color: AppColors.darkColor),);
-                    }else{
-                      return const LinearProgressIndicator(color: AppColors.orangeDarkColor,);
-                    }
-                  },
-                ),
-              ],
+                    },
+                    builder: (context, state) {
+                      if(state is SuccessGetPrincipaisRestaurantesState){
+                        if(_restaurantes.isEmpty){
+                          return Container(
+                            alignment: Alignment.center,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 50,),
+                                SvgPicture.asset(AppAssets.notFoundIcon, width: 100,),
+                                Text('Nenhum restaurante encontrado!', style: AppFonts.regularLarge.copyWith(color: AppColors.darkColor), textAlign: TextAlign.center,),
+                              ],
+                            ),
+                          );
+                        }else{
+                          return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: _restaurantes.map((e) => RestauranteWidget(model: e)).toList(),
+                          );
+                        }
+                      }else if(state is ErrorGetPrincipaisRestaurantesState){
+                        //TODO: Tratar erro dps
+                        return Text('Erro!', style: AppFonts.subTitle.copyWith(color: AppColors.darkColor),);
+                      }else{
+                        return const LinearProgressIndicator(color: AppColors.orangeDarkColor,);
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

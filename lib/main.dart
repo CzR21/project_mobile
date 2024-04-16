@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             surfaceTintColor: Colors.transparent,
           ),
         ),
-        initialRoute: AppRoutes.login,
+        initialRoute: AppRoutes.home,//AppRoutes.login,
         navigatorObservers: [AppRoutes.myRouteObserver],
         routes: AppRoutes.routes,
         navigatorKey: AppRoutes.navigatorKey,
