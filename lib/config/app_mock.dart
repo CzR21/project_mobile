@@ -28,4 +28,19 @@ class AppMock extends ChangeNotifier{
     notifyListeners();
   }
 
+  void removerCarrinho(int index){
+    _carrinho.removeAt(index);
+    notifyListeners();
+  }
+
+  void limparCarrinho(){
+    _carrinho.clear();
+    notifyListeners();
+  }
+
+  void alterarQuantidade(int index, int quantidade){
+    _carrinho.elementAt(index).quantidade = quantidade;
+    notifyListeners();
+  }
+
 }

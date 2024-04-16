@@ -22,8 +22,10 @@ class CarrinhoPage extends StatefulWidget {
 
 
 class _CarrinhoPageState extends State<CarrinhoPage> {
+
   late List<CarrinhoModel> _carrinho;
   late EnderecoModel _endereco;
+  late AppMock _provider;
 
   double _calcularTotal() {
     double total = 0;
@@ -42,9 +44,10 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
 
   @override
   Widget build(BuildContext context) {
-    _endereco = Provider.of<AppMock>(context).endereco;
-    _carrinho = Provider.of<AppMock>(context).carrinho;
-    
+    _provider = Provider.of<AppMock>(context, listen: true);
+    _endereco = _provider.endereco;
+    _carrinho = _provider.carrinho;
+
     return Scaffold(
       backgroundColor: AppColors.bgDarkColor,
       body: Column(
@@ -72,7 +75,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
                             .copyWith(color: AppColors.textWhiteColor))),
                 AppTextButtomComponent(
                     text: 'LIMPAR',
-                    function: () => {},
+                    function: () => provider.limparCarrinho(),
                     style: AppFonts.linkLarge.copyWith(
                         color: AppColors.textOrangeColor,
                         decorationColor: AppColors.textOrangeColor))
@@ -225,7 +228,11 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
               iconWidth: 15,
               width: 30,
               function: () {
-                if (model.quantidade > 1) setState(() => model.quantidade--);
+                if (model.quantidade > 1) {
+                  _provider.alterarQuantidade(_carrinho.indexOf(model), model.quantidade--);
+                } else {
+                  _provider.removerCarrinho(_carrinho.indexOf(model));
+                }
               }),
           const SizedBox(
             width: 10,
