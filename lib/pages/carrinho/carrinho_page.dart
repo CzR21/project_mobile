@@ -20,7 +20,6 @@ class CarrinhoPage extends StatefulWidget {
   State<CarrinhoPage> createState() => _CarrinhoPageState();
 }
 
-
 class _CarrinhoPageState extends State<CarrinhoPage> {
   late List<CarrinhoModel> _carrinho;
   late EnderecoModel _endereco;
@@ -29,7 +28,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
     double total = 0;
 
     _carrinho.forEach((element) => total += element.produto != null
-        ? (element.produto!.preco * element.quantidade)
+        ? (element.produto.preco * element.quantidade)
         : 0);
 
     return total;
@@ -44,7 +43,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
   Widget build(BuildContext context) {
     _endereco = Provider.of<AppMock>(context).endereco;
     _carrinho = Provider.of<AppMock>(context).carrinho;
-    
+
     return Scaffold(
       backgroundColor: AppColors.bgDarkColor,
       body: Column(
@@ -179,7 +178,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
             decoration: BoxDecoration(
                 color: AppColors.darkColor,
                 borderRadius: BorderRadius.circular(20)),
-            child: Image.asset('assets/images/produto/${model.produto!.imagem}'),
+            child: Image.asset('assets/images/produto/${model.produto.imagem}'),
           ),
           const SizedBox(
             width: 20,
@@ -192,7 +191,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  model.produto!.nome,
+                  model.produto.nome,
                   style: AppFonts.subTitle2
                       .copyWith(color: AppColors.textWhiteColor),
                 ),
@@ -201,7 +200,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      (model.produto!.preco * model.quantidade).toString(),
+                      (model.produto.preco * model.quantidade).toString(),
                       style: AppFonts.boldLarge
                           .copyWith(color: AppColors.textWhiteColor),
                     ),
