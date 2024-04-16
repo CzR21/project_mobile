@@ -128,34 +128,34 @@ class _LoginPageState extends State<LoginPage> {
                                 },
                               ),
                               const SizedBox(
-                                height: 20,
+                                height: 40,
                               ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  AppCheckBoxComponent(
-                                    value: rememberMe,
-                                    function: () => setState(
-                                        () => rememberMe = !rememberMe),
-                                    child: Text(
-                                      "Manter conectado",
-                                      style: AppFonts.regularDefault.copyWith(
-                                        color: AppColors.textDarkGreyColor,
-                                      ),
-                                    ),
-                                  ),
-                                  AppTextButtomComponent(
-                                    text: 'Esqueci a senha',
-                                    function: () => Navigator.of(context)
-                                        .pushNamed(AppRoutes.esqueciSenha),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
+                              // Row(
+                              //   mainAxisSize: MainAxisSize.max,
+                              //   mainAxisAlignment:
+                              //       MainAxisAlignment.spaceBetween,
+                              //   children: [
+                              //     AppCheckBoxComponent(
+                              //       value: rememberMe,
+                              //       function: () => setState(
+                              //           () => rememberMe = !rememberMe),
+                              //       child: Text(
+                              //         "Manter conectado",
+                              //         style: AppFonts.regularDefault.copyWith(
+                              //           color: AppColors.textDarkGreyColor,
+                              //         ),
+                              //       ),
+                              //     ),
+                              //     AppTextButtomComponent(
+                              //       text: 'Esqueci a senha',
+                              //       function: () => Navigator.of(context)
+                              //           .pushNamed(AppRoutes.esqueciSenha),
+                              //     )
+                              //   ],
+                              // ),
+                              // const SizedBox(
+                              //   height: 20,
+                              // ),
                               AppButtomComponent(
                                 onPressed: () => _login(Tipologin.email),
                                 text: 'Login',
@@ -186,45 +186,45 @@ class _LoginPageState extends State<LoginPage> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                "Ou",
-                                style: AppFonts.subTitle2.copyWith(
-                                  color: AppColors.textDarkGreyColor,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  AppIconButtomComponent(
-                                    icon: AppAssets.googleIcon,
-                                    backgroundColor: AppColors.googleColor,
-                                    color: AppColors.textWhiteColor,
-                                    function: () => _login(Tipologin.google),
-                                    width: 60,
-                                    iconWidth: 25,
-                                  ),
-                                  AppIconButtomComponent(
-                                    icon: AppAssets.facebookIcon,
-                                    backgroundColor: AppColors.facebookColor,
-                                    color: AppColors.textWhiteColor,
-                                    function: () => _login(Tipologin.google),
-                                    width: 60,
-                                    iconWidth: 20,
-                                  ),
-                                  AppIconButtomComponent(
-                                    icon: AppAssets.twitterIcon,
-                                    color: AppColors.textWhiteColor,
-                                    backgroundColor: AppColors.twitterColor,
-                                    function: () => _login(Tipologin.google),
-                                    width: 60,
-                                    iconWidth: 20,
-                                  ),
-                                ],
-                              )
+                              // Text(
+                              //   "Ou",
+                              //   style: AppFonts.subTitle2.copyWith(
+                              //     color: AppColors.textDarkGreyColor,
+                              //   ),
+                              // ),
+                              // const SizedBox(
+                              //   height: 20,
+                              // ),
+                              // Row(
+                              //   mainAxisAlignment:
+                              //       MainAxisAlignment.spaceEvenly,
+                              //   children: [
+                              //     AppIconButtomComponent(
+                              //       icon: AppAssets.googleIcon,
+                              //       backgroundColor: AppColors.googleColor,
+                              //       color: AppColors.textWhiteColor,
+                              //       function: () => _login(Tipologin.google),
+                              //       width: 60,
+                              //       iconWidth: 25,
+                              //     ),
+                              //     AppIconButtomComponent(
+                              //       icon: AppAssets.facebookIcon,
+                              //       backgroundColor: AppColors.facebookColor,
+                              //       color: AppColors.textWhiteColor,
+                              //       function: () => _login(Tipologin.google),
+                              //       width: 60,
+                              //       iconWidth: 20,
+                              //     ),
+                              //     AppIconButtomComponent(
+                              //       icon: AppAssets.twitterIcon,
+                              //       color: AppColors.textWhiteColor,
+                              //       backgroundColor: AppColors.twitterColor,
+                              //       function: () => _login(Tipologin.google),
+                              //       width: 60,
+                              //       iconWidth: 20,
+                              //     ),
+                              //   ],
+                              // )
                             ],
                           ),
                         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_mobile/components/buttons/app_back_buttom_component.dart';
+import 'package:project_mobile/helpers/toasty_helper.dart';
 import '../../components/buttons/app_buttom_component.dart';
 import '../../components/textfields/app_textfield_component.dart';
 import '../../data/masks/app_masks.dart';
@@ -148,8 +149,8 @@ class _CadastroPageState extends State<CadastroPage> {
                               const SizedBox(height: 20,),
 
                               AppButtomComponent(
-                                onPressed: () => {},
-                                text: 'Login'
+                                onPressed: () => _registrar(),
+                                text: 'Registrar'
                               ),
                             ],
                           ),
@@ -162,5 +163,17 @@ class _CadastroPageState extends State<CadastroPage> {
           }
       ),
     );
+  }
+
+  _registrar(){
+    var validate1 = _nameFormkey.currentState!.validate();
+    var validate2 = _emailFormkey.currentState!.validate();
+    var validate3 = _passwordFormkey.currentState!.validate();
+    var validate4 = _confirmPasswordFormkey.currentState!.validate();
+
+    if(validate1  && validate2 && validate3 && validate4){
+      ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Cadastro realizado com sucesso");
+      Navigator.of(context).pop();
+    }
   }
 }
