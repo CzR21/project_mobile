@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_mobile/blocs/autenticacao/autenticacao_bloc.dart';
+import 'package:project_mobile/blocs/autenticacao/autenticacao_state.dart';
 import 'package:project_mobile/components/buttons/app_buttom_component.dart';
 import 'package:project_mobile/components/buttons/app_icon_buttom_component.dart';
 import 'package:project_mobile/components/buttons/app_text_buttom_component.dart';
@@ -9,6 +11,7 @@ import 'package:project_mobile/config/app_assets.dart';
 import 'package:project_mobile/config/app_colors.dart';
 import 'package:project_mobile/config/app_fonts.dart';
 import 'package:project_mobile/config/app_routes.dart';
+import 'package:project_mobile/helpers/toasty_helper.dart';
 
 enum Tipologin { email, google, facebook, twitter }
 
@@ -29,6 +32,14 @@ class _LoginPageState extends State<LoginPage> {
   bool visibleText = false;
   bool rememberMe = false;
   bool loadingLogin = false;
+
+  final AutenticacaoBloc _autenticacaoBloc = AutenticacaoBloc();
+
+  @override
+  void dispose() {
+    _autenticacaoBloc.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -241,11 +252,17 @@ class _LoginPageState extends State<LoginPage> {
     var validatePassword = _passwordFormkey.currentState!.validate();
 
     if (validateEmail && validatePassword) {
-      //TODO: Implementar login
       setState(() => loadingLogin = true);
-      await Future.delayed(const Duration(seconds: 2)).then((value) {
-        setState(() => loadingLogin = false);
-        Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+
+      _autenticacaoBloc.add(LoginEvent(email: _emailController.text, senha: _passwordController.text));
+      _autenticacaoBloc.stream.listen((event) {
+        if(event is SuccessLoginState){
+          ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Login realizado com sucesso");
+          Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+        }else if(event is ErrorLoginState){
+          ToastHelper.showMessage(context: context, messageType: MessageType.error, message: event.erro.message);
+          setState(() => loadingLogin = false);
+        }
       });
     }
   }
