@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_mobile/blocs/autenticacao/autenticacao_bloc.dart';
+import 'package:project_mobile/blocs/autenticacao/autenticacao_state.dart';
 import 'package:project_mobile/components/buttons/app_back_buttom_component.dart';
+import 'package:project_mobile/config/app_routes.dart';
 import 'package:project_mobile/helpers/toasty_helper.dart';
 import '../../components/buttons/app_buttom_component.dart';
 import '../../components/textfields/app_textfield_component.dart';
@@ -179,15 +181,15 @@ class _CadastroPageState extends State<CadastroPage> {
     if(validate1  && validate2 && validate3 && validate4){
       setState(() => loading = true);
 
-      _autenticacaoBloc.add(LoginEvent(email: _emailController.text, senha: _passwordController.text));
+      _autenticacaoBloc.add(CadastroEvent(email: _emailController.text, senha: _passwordController.text));
       _autenticacaoBloc.stream.listen((event) {
-        // if(event is SuccessLoginState){
-        //   ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Login realizado com sucesso");
-        //   Navigator.of(context).pushReplacementNamed(AppRoutes.home);
-        // }else if(event is ErrorLoginState){
-        //   ToastHelper.showMessage(context: context, messageType: MessageType.error, message: "E-mail e/ou senha inválidos");
-        //   setState(() => loading = false);
-        // }
+        if(event is SuccessCadastroState){
+          ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Cadastros realizado com sucesso");
+          Navigator.of(context).pushReplacementNamed(AppRoutes.login);
+        }else if(event is ErrorCadastroState){
+          ToastHelper.showMessage(context: context, messageType: MessageType.error, message: "Usuário já cadastrado");
+          setState(() => loading = false);
+        }
       });
     }
   }
