@@ -260,7 +260,7 @@ class _LoginPageState extends State<LoginPage> {
           ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Login realizado com sucesso");
           Navigator.of(context).pushReplacementNamed(AppRoutes.home);
         }else if(event is ErrorLoginState){
-          ToastHelper.showMessage(context: context, messageType: MessageType.error, message: event.erro.message);
+          ToastHelper.showMessage(context: context, messageType: MessageType.error, message: "E-mail e/ou senha inválidos");
           setState(() => loadingLogin = false);
         }
       });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_mobile/blocs/autenticacao/autenticacao_bloc.dart';
 import 'package:project_mobile/components/buttons/app_back_buttom_component.dart';
 import 'package:project_mobile/helpers/toasty_helper.dart';
 import '../../components/buttons/app_buttom_component.dart';
@@ -18,6 +19,8 @@ class CadastroPage extends StatefulWidget {
 
 class _CadastroPageState extends State<CadastroPage> {
 
+  final AutenticacaoBloc _autenticacaoBloc = AutenticacaoBloc();
+
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -30,6 +33,7 @@ class _CadastroPageState extends State<CadastroPage> {
 
   bool visibleText = false;
   bool visibleText2 = false;
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +154,8 @@ class _CadastroPageState extends State<CadastroPage> {
 
                               AppButtomComponent(
                                 onPressed: () => _registrar(),
-                                text: 'Registrar'
+                                text: 'Registrar',
+                                loading: loading,
                               ),
                             ],
                           ),
@@ -172,8 +177,18 @@ class _CadastroPageState extends State<CadastroPage> {
     var validate4 = _confirmPasswordFormkey.currentState!.validate();
 
     if(validate1  && validate2 && validate3 && validate4){
-      ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Cadastro realizado com sucesso");
-      Navigator.of(context).pop();
+      setState(() => loading = true);
+
+      _autenticacaoBloc.add(LoginEvent(email: _emailController.text, senha: _passwordController.text));
+      _autenticacaoBloc.stream.listen((event) {
+        // if(event is SuccessLoginState){
+        //   ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Login realizado com sucesso");
+        //   Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+        // }else if(event is ErrorLoginState){
+        //   ToastHelper.showMessage(context: context, messageType: MessageType.error, message: "E-mail e/ou senha inválidos");
+        //   setState(() => loading = false);
+        // }
+      });
     }
   }
 }
