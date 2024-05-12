@@ -1,4 +1,4 @@
-import 'package:project_mobile/data/models/produto_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 enum Categoria{
   pizza,
@@ -18,7 +18,7 @@ class RestauranteModel{
   List<Categoria> categorias;
   double frete;
   String tempo;
-  String image;
+  String imagem;
   double nota;
   String descricao;
 
@@ -28,12 +28,31 @@ class RestauranteModel{
     required this.categorias,
     required this.frete,
     required this.tempo,
-    required this.image,
+    required this.imagem,
     required this.nota,
     required this.descricao,
   });
 
   String get categoriasString{
     return categorias.map((e) => e.name).toList().join(' - ');
+  }
+
+  factory RestauranteModel.fromSnapshot(DocumentSnapshot doc) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    List<Categoria> categorias = (data['categorias'] as List)
+        .map((e) => Categoria.values.firstWhere((cat) => cat.name == e))
+        .toList();
+
+    return RestauranteModel(
+      id: doc.id,
+      nome: data['nome'] ?? '',
+      categorias: categorias,
+      frete: data['frete'] ?? '',
+      tempo: data['tempo'] ?? '',
+      imagem: data['imagem'] ?? '',
+      nota: data['nota'] ?? '',
+      descricao: data['descricao'] ?? '',
+    );
   }
 }

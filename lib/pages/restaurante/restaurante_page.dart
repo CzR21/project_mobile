@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_mobile/blocs/produto/produto_bloc.dart';
 import 'package:project_mobile/components/buttons/app_icon_buttom_component.dart';
 import 'package:project_mobile/config/app_assets.dart';
 import 'package:project_mobile/config/app_colors.dart';
@@ -23,49 +24,26 @@ class RestaurantePage extends StatefulWidget {
 }
 
 class _RestaurantePageState extends State<RestaurantePage> {
-
   late AppMock _provider;
+  final ProdutoBloc _produtoBloc = ProdutoBloc();
+  Map<String, List<ProdutoModel>> _produtosCategoria = {};
 
   @override
   void initState() {
     super.initState();
-  }
-
-  getProdutosCategoria() {
-    try {
-      final produtos = ProdutosRepository.listaProdutos.where(
-        (element) => element.empresaId == widget.restaurante.id,
-      );
-
-      if(produtos.isEmpty){
-        return null;
-      }
-
-      Map<String, List<ProdutoModel>> produtosCategoria = {};
-
-      for (var produto in produtos) {
-        produtosCategoria
-            .putIfAbsent(produto.categoria.name, () => [])
-            .add(produto);
-      }
-
-      return produtosCategoria;
-    } catch (e) {
-      return null;
-    }
+    _produtoBloc.add(GetProdutoEvent(restauranteId: widget.restaurante.id));
   }
 
   @override
   Widget build(BuildContext context) {
-    final produtosCategoria = getProdutosCategoria();
-
     _provider = Provider.of<AppMock>(context);
-
     return Scaffold(
       appBar: AppBar(
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20.0, ),
+            padding: const EdgeInsets.only(
+              right: 20.0,
+            ),
             child: Stack(
               children: [
                 AppIconButtomComponent(
@@ -77,23 +55,24 @@ class _RestaurantePageState extends State<RestaurantePage> {
                   function: () =>
                       Navigator.of(context).pushNamed(AppRoutes.carrinho),
                 ),
-
                 Visibility(
                   visible: _provider.carrinho.length > 0,
                   child: Positioned(
-                    right: 1,
-                    top: 0,
-                    child: Container(
-                      height: 20,
-                      width: 20,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: AppColors.orangeDarkColor,
-                        borderRadius: BorderRadius.circular(999)
-                      ),
-                    child: Text(_provider.carrinho.length.toString(), style: AppFonts.regularSmall.copyWith(color: AppColors.textWhiteColor),),
-                   )
-                  ),
+                      right: 1,
+                      top: 0,
+                      child: Container(
+                        height: 20,
+                        width: 20,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: AppColors.orangeDarkColor,
+                            borderRadius: BorderRadius.circular(999)),
+                        child: Text(
+                          _provider.carrinho.length.toString(),
+                          style: AppFonts.regularSmall
+                              .copyWith(color: AppColors.textWhiteColor),
+                        ),
+                      )),
                 )
               ],
             ),
@@ -112,7 +91,7 @@ class _RestaurantePageState extends State<RestaurantePage> {
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
                     image: AssetImage(
-                        "assets/images/restaurantes/${widget.restaurante.image}"),
+                        "assets/images/restaurantes/${widget.restaurante.imagem}"),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -146,38 +125,49 @@ class _RestaurantePageState extends State<RestaurantePage> {
                   _iconText(AppAssets.watchIcon, widget.restaurante.tempo),
                 ],
               ),
-              Builder(builder: (context) {
-                if (produtosCategoria != null) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: produtosCategoria.entries
-                        .map<Widget>((entry) => ProdutoWidget(model: entry))
-                        .toList(),
-                  );
-                } else {
-                  return Container(
-                    alignment: Alignment.center,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 50,
+              BlocConsumer<ProdutoBloc, ProdutoState>(
+                  bloc: _produtoBloc,
+                  listener: (context, state) {
+                    if (state is SuccessGetProdutosState) {
+                      setState(() => _produtosCategoria = state.model);
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is SuccessGetProdutosState) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: _produtosCategoria.entries
+                            .map<Widget>((entry) => ProdutoWidget(model: entry))
+                            .toList(),
+                      );
+                    } else if (state is ErrorGetProdutosState) {
+                      return Container(
+                        alignment: Alignment.center,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              height: 50,
+                            ),
+                            SvgPicture.asset(
+                              AppAssets.notFoundIcon,
+                              width: 100,
+                            ),
+                            Text(
+                              'Nenhum produto encontrado!',
+                              style: AppFonts.regularLarge
+                                  .copyWith(color: AppColors.darkColor),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
                         ),
-                        SvgPicture.asset(
-                          AppAssets.notFoundIcon,
-                          width: 100,
-                        ),
-                        Text(
-                          'Nenhum produto encontrado!',
-                          style: AppFonts.regularLarge
-                              .copyWith(color: AppColors.darkColor),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  );
-                }
-              })
+                      );
+                    } else {
+                      return const LinearProgressIndicator(
+                        color: AppColors.orangeDarkColor,
+                      );
+                    }
+                  })
             ],
           ),
         ),
