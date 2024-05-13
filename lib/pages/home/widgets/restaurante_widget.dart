@@ -51,7 +51,7 @@ class _RestauranteWidgetState extends State<RestauranteWidget> {
                     // color: const Color.fromARGB(255, 7, 51, 95),
                     image: DecorationImage(
                       image: AssetImage(
-                        "assets/images/restaurantes/${widget.model.image}",
+                        "assets/images/restaurantes/${widget.model.imagem}",
                       ),
                       fit: BoxFit.cover,
                     ),
