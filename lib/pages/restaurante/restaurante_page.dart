@@ -12,7 +12,6 @@ import 'package:project_mobile/config/app_routes.dart';
 import 'package:project_mobile/data/models/produto_model.dart';
 import "package:project_mobile/data/models/restaurante_model.dart";
 import 'package:project_mobile/pages/restaurante/widgets/produtos_widget.dart';
-import 'package:project_mobile/repositories/produtos_repository.dart';
 import 'package:provider/provider.dart';
 
 class RestaurantePage extends StatefulWidget {
