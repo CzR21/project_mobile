@@ -4,11 +4,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:project_mobile/blocs/endereco/endereco_bloc.dart';
 import 'package:project_mobile/config/app_mock.dart';
 import 'package:provider/provider.dart';
+
 import '../../../blocs/endereco/endereco_state.dart';
-import '../../../data/models/endereco_model.dart';
-import '../../../config/app_colors.dart';
 import '../../../config/app_assets.dart';
+import '../../../config/app_colors.dart';
 import '../../../config/app_fonts.dart';
+import '../../../data/models/endereco_model.dart';
 
 class EnderecoBottomSheet extends StatefulWidget {
 

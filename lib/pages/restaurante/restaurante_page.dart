@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_mobile/blocs/produto/produto_bloc.dart';
 import 'package:project_mobile/components/buttons/app_icon_buttom_component.dart';
 import 'package:project_mobile/config/app_assets.dart';
 import 'package:project_mobile/config/app_colors.dart';
 import 'package:project_mobile/config/app_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_mobile/config/app_mock.dart';
 import 'package:project_mobile/config/app_routes.dart';
 import 'package:project_mobile/data/models/produto_model.dart';

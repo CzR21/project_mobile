@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:project_mobile/data/models/carrinho_model.dart';
 import 'package:project_mobile/data/models/endereco_model.dart';
+import '../data/models/usuario_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppMock extends ChangeNotifier {

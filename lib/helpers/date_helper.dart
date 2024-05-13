@@ -4,11 +4,11 @@ class DateHelper{
     DateTime now = DateTime.now();
 
     if(now.hour >= 6 && now.hour < 12){
-      return 'bom dia!';
+      return 'Bom dia!';
     }else if(now.hour > 12 && now.hour < 18){
-      return 'boa tarde!';
+      return 'Boa tarde!';
     }else{
-      return 'boa noite!';
+      return 'Boa noite!';
     }
   }
 

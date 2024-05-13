@@ -16,10 +16,10 @@ class RestauranteModel{
   String id;
   String nome;
   List<Categoria> categorias;
-  double frete;
+  num frete;
   String tempo;
   String imagem;
-  double nota;
+  num nota;
   String descricao;
 
   RestauranteModel({
