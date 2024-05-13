@@ -3,6 +3,8 @@ import 'package:project_mobile/data/models/erro_model.dart';
 import 'package:project_mobile/data/models/usuario_model.dart';
 import 'package:project_mobile/services/storage_service.dart';
 
+import '../services/firestore_service.dart';
+
 class AutenticacaoRepository{
 
 
