@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:project_mobile/blocs/autenticacao/autenticacao_state.dart';
+import 'package:project_mobile/data/models/usuario_model.dart';
 import 'package:project_mobile/repositories/autenticacao_repository.dart';
 import '../../data/models/erro_model.dart';
 
@@ -21,7 +22,7 @@ class AutenticacaoBloc extends Bloc<AutenticacaoEvent, AutenticacaoState> {
 
     on<CadastroEvent>((event, emit) async {
       try {
-        await AutenticacaoRepository.cadastro(event.email, event.senha);
+        await AutenticacaoRepository.cadastro(event.model, event.senha);
         emit(SuccessCadastroState());
       } on ErrorModel catch (e) {
         emit(ErrorCadastroState(erro: e));

@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:project_mobile/data/models/erro_model.dart';
+import 'package:project_mobile/data/models/usuario_model.dart';
+import 'package:project_mobile/services/storage_service.dart';
 
 class AutenticacaoRepository{
+
 
   static Future<void> login(String email, String senha) async{
     try{
@@ -18,17 +21,15 @@ class AutenticacaoRepository{
     }
   }
 
-  static Future<void> cadastro(String email, String senha) async{
+  static Future<void> cadastro(UsuarioModel model, String senha) async{
     try{
       final FirebaseAuth auth = FirebaseAuth.instance;
 
-      await auth.createUserWithEmailAndPassword(email: email, password: senha);
+      await auth.createUserWithEmailAndPassword(email: model.email, password: senha);
+
+      await FirestoreService.firebaseFirestore.collection("usuarios").add(model.toMap());
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-
-      } else if (e.code == 'wrong-password') {
-
-      }
+      throw ErrorModel(name: e.message ?? "Erro desconhecido", message: e.code, code: 400);
     }
   }
 
@@ -38,7 +39,7 @@ class AutenticacaoRepository{
 
       await auth.signOut();
     } on FirebaseAuthException catch (e) {
-
+      throw ErrorModel(name: e.message ?? "Erro desconhecido", message: e.code, code: 400);
     }
   }
 

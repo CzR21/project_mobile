@@ -16,11 +16,11 @@ class LoginEvent extends AutenticacaoEvent {
 
 class CadastroEvent extends AutenticacaoEvent {
 
-  final String email;
+  final UsuarioModel model;
   final String senha;
 
   CadastroEvent({
-    required this.email,
+    required this.model,
     required this.senha
   });
 }

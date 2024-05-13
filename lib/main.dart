@@ -10,35 +10,34 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  AutenticacaoRepository.usuarioAutenticado.listen((User? user) => runApp(MyApp(initialRoute: user == null ? AppRoutes.login : AppRoutes.home,)));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  // This widget is the root of your application.
+  final String initialRoute;
+
+  const MyApp({super.key, required this.initialRoute});
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => AppMock(),
-      builder: (context, child) => StreamBuilder(
-        stream: AutenticacaoRepository.usuarioAutenticado,
-        builder: (context, snapshot) => MaterialApp(
-          title: 'Food APP',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            canvasColor: Colors.white,
-            dialogBackgroundColor: Colors.white,
-            dialogTheme: const DialogTheme(
-              backgroundColor: Colors.white,
-              surfaceTintColor: Colors.transparent,
-            ),
+      builder: (context, child) => MaterialApp(
+        title: 'Food APP',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          canvasColor: Colors.white,
+          dialogBackgroundColor: Colors.white,
+          dialogTheme: const DialogTheme(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.transparent,
           ),
-          initialRoute: snapshot.hasData ? AppRoutes.home : AppRoutes.login,
-          navigatorObservers: [AppRoutes.myRouteObserver],
-          routes: AppRoutes.routes,
-          navigatorKey: AppRoutes.navigatorKey,
-        )
+        ),
+        initialRoute: initialRoute,
+        navigatorObservers: [AppRoutes.myRouteObserver],
+        routes: AppRoutes.routes,
+        navigatorKey: AppRoutes.navigatorKey,
       ),
     );
   }
