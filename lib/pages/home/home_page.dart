@@ -1,24 +1,31 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project_mobile/blocs/restaurante/restaurante_bloc.dart';
+import 'package:project_mobile/config/app_assets.dart';
+import 'package:project_mobile/config/app_colors.dart';
+import 'package:project_mobile/config/app_contansts.dart';
+import 'package:project_mobile/config/app_fonts.dart';
 import 'package:project_mobile/config/app_mock.dart';
 import 'package:project_mobile/config/app_routes.dart';
 import 'package:project_mobile/data/models/categoria_model.dart';
 import 'package:project_mobile/data/models/endereco_model.dart';
+import 'package:project_mobile/data/models/restaurante_model.dart';
+import 'package:project_mobile/data/models/usuario_model.dart';
 import 'package:project_mobile/helpers/bottom_sheet_helper.dart';
+import 'package:project_mobile/helpers/date_helper.dart';
+import 'package:project_mobile/pages/home/widgets/drawer_component.dart';
 import 'package:project_mobile/pages/home/widgets/endereco_bottom_sheet.dart';
 import 'package:project_mobile/pages/home/widgets/restaurante_widget.dart';
-import 'package:project_mobile/data/models/restaurante_model.dart';
-import 'package:project_mobile/helpers/date_helper.dart';
-import 'package:project_mobile/config/app_assets.dart';
-import 'package:project_mobile/config/app_colors.dart';
-import 'package:project_mobile/config/app_fonts.dart';
+import 'package:project_mobile/services/firestore_service.dart';
 import 'package:provider/provider.dart';
+
 import '../../blocs/restaurante/restaurante_state.dart';
 import '../../components/buttons/app_icon_buttom_component.dart';
-import 'widgets/categoria_widget.dart';
 import '../../components/textfields/app_textfield_component.dart';
+import 'widgets/categoria_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -48,10 +55,22 @@ class _HomePageState extends State<HomePage> {
   late EnderecoModel _endereco;
   late AppMock _provider;
 
+  UsuarioModel? _usuario;
+
   @override
   void initState() {
-    _restauranteBloc.add(GetPrincipaisRestaurantesEvent());
+    buscarUser().then((_) => _restauranteBloc.add(GetPrincipaisRestaurantesEvent()));
     super.initState();
+  }
+
+  Future buscarUser() async {
+    try{
+      _usuario = AppConstants.usuario;
+    }catch (ex){
+      _usuario = await FirestoreService.buscarUsuarioPorEmail(FirebaseAuth.instance.currentUser!.email!);
+      AppConstants.setUser(_usuario!);
+    }
+
   }
 
   @override
@@ -85,23 +104,26 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             backgroundColor: AppColors.backgroundColor,
-            // leading: Padding(
-            //   padding: const EdgeInsets.only(left: 20.0, bottom: 10),
-            //   child: Container(
-            //     width: 55,
-            //     height: 55,
-            //     alignment: Alignment.center,
-            //     decoration: BoxDecoration(
-            //       border: Border.all(color: AppColors.greyLiteColor, width: 2),
-            //       borderRadius: BorderRadius.circular(999),
-            //     ),
-            //     child: SvgPicture.asset(
-            //       AppAssets.userIcon,
-            //       width: 25,
-            //       color: AppColors.darkColor,
-            //     ),
-            //   ),
-            // ),
+            leading: GestureDetector(
+              onTap: () => BottomSheetHelper.show(context: context, child: const DrawerWidget(), useFullScreen: true, isScrollable: false),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20.0, bottom: 10),
+                child: Container(
+                  width: 55,
+                  height: 55,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.greyLiteColor, width: 2),
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                  child: SvgPicture.asset(
+                    AppAssets.userIcon,
+                    width: 25,
+                    color: AppColors.darkColor,
+                  ),
+                ),
+              ),
+            ),
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 20.0, bottom: 10),
@@ -150,12 +172,12 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   RichText(
                     text: TextSpan(
-                      text: "Olá, Nome usuário, ",
-                      style: AppFonts.subTitle2.copyWith(color: AppColors.textDarkColor),
+                      text: DateHelper.buscarMensagemDia,
+                      style: AppFonts.subTitle2.copyWith(color: AppColors.textDarkColor, fontWeight: FontWeight.w700),
                       children: [
                         TextSpan(
-                          text: DateHelper.buscarMensagemDia,
-                          style: AppFonts.subTitle2.copyWith(color: AppColors.textDarkColor, fontWeight: FontWeight.w700),
+                          text: ", ${_usuario?.nome.split(" ").first ?? ""}.",
+                          style: AppFonts.subTitle2.copyWith(color: AppColors.textDarkColor),
                         )
                       ]
                     ),

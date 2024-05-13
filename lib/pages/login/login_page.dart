@@ -1,17 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:project_mobile/blocs/autenticacao/autenticacao_bloc.dart';
 import 'package:project_mobile/blocs/autenticacao/autenticacao_state.dart';
 import 'package:project_mobile/components/buttons/app_buttom_component.dart';
-import 'package:project_mobile/components/buttons/app_icon_buttom_component.dart';
 import 'package:project_mobile/components/buttons/app_text_buttom_component.dart';
-import 'package:project_mobile/components/checkbox/app_checkbox_component.dart';
 import 'package:project_mobile/components/textfields/app_textfield_component.dart';
-import 'package:project_mobile/data/masks/app_masks.dart';
 import 'package:project_mobile/config/app_assets.dart';
 import 'package:project_mobile/config/app_colors.dart';
+import 'package:project_mobile/config/app_contansts.dart';
 import 'package:project_mobile/config/app_fonts.dart';
 import 'package:project_mobile/config/app_routes.dart';
+import 'package:project_mobile/data/masks/app_masks.dart';
+import 'package:project_mobile/data/models/usuario_model.dart';
 import 'package:project_mobile/helpers/toasty_helper.dart';
+import 'package:project_mobile/services/firestore_service.dart';
 
 enum Tipologin { email, google, facebook, twitter }
 
@@ -255,10 +257,18 @@ class _LoginPageState extends State<LoginPage> {
       setState(() => loadingLogin = true);
 
       _autenticacaoBloc.add(LoginEvent(email: _emailController.text, senha: _passwordController.text));
-      _autenticacaoBloc.stream.listen((event) {
+      _autenticacaoBloc.stream.listen((event) async {
         if(event is SuccessLoginState){
-          ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Login realizado com sucesso");
-          Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+          var user = await FirestoreService.buscarUsuarioPorEmail(_emailController.text);
+
+          if(user == null){
+            ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Usuário não encontrado");
+            setState(() => loadingLogin = false);
+          }else{
+            AppConstants.setUser(user);
+            ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Login realizado com sucesso");
+            Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+          }
         }else if(event is ErrorLoginState){
           ToastHelper.showMessage(context: context, messageType: MessageType.error, message: "E-mail e/ou senha inválidos");
           setState(() => loadingLogin = false);

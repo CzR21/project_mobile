@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:project_mobile/data/models/produto_model.dart';
 
 import '../services/firestore_service.dart';

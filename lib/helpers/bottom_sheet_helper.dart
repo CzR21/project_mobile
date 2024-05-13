@@ -43,6 +43,7 @@ class BottomSheetHelper {
             constraints: BoxConstraints(
               minWidth: MediaQuery.of(context).size.width,
               maxWidth: MediaQuery.of(context).size.width,
+              minHeight: useFullScreen ? MediaQuery.of(context).size.height : 0,
               maxHeight: (useFullScreen ? MediaQuery.of(context).size.height : 2 * MediaQuery.of(context).size.height / 3 + MediaQuery.of(context).viewInsets.bottom) - MediaQuery.of(context).viewInsets.top,
             ),
             child: GestureDetector(

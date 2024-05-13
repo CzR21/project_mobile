@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_mobile/data/models/carrinho_model.dart';
 import 'package:project_mobile/data/models/endereco_model.dart';
+import '../data/models/usuario_model.dart';
 
 class AppMock extends ChangeNotifier{
 

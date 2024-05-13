@@ -5,12 +5,13 @@ import 'package:project_mobile/components/buttons/app_back_buttom_component.dart
 import 'package:project_mobile/data/models/usuario_model.dart';
 import 'package:project_mobile/helpers/toasty_helper.dart';
 import 'package:uuid/uuid.dart';
+
 import '../../components/buttons/app_buttom_component.dart';
 import '../../components/textfields/app_textfield_component.dart';
-import '../../data/masks/app_masks.dart';
 import '../../config/app_assets.dart';
 import '../../config/app_colors.dart';
 import '../../config/app_fonts.dart';
+import '../../data/masks/app_masks.dart';
 
 class CadastroPage extends StatefulWidget {
 

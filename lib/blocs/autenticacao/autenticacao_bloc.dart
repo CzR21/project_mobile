@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_mobile/blocs/autenticacao/autenticacao_state.dart';
 import 'package:project_mobile/data/models/usuario_model.dart';
 import 'package:project_mobile/repositories/autenticacao_repository.dart';
+
 import '../../data/models/erro_model.dart';
 
 part 'autenticacao_event.dart';

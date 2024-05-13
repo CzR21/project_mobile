@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:project_mobile/data/models/erro_model.dart';
 import 'package:project_mobile/data/models/usuario_model.dart';
-import 'package:project_mobile/services/storage_service.dart';
 
+import '../config/app_routes.dart';
 import '../services/firestore_service.dart';
 
 class AutenticacaoRepository{
@@ -29,7 +30,7 @@ class AutenticacaoRepository{
 
       await auth.createUserWithEmailAndPassword(email: model.email, password: senha);
 
-      await FirestoreService.firebaseFirestore.collection("usuarios").add(model.toMap());
+      await FirestoreService.firebaseFirestore.collection("usuarios/${model.id}").add(model.toMap());
     } on FirebaseAuthException catch (e) {
       throw ErrorModel(name: e.message ?? "Erro desconhecido", message: e.code, code: 400);
     }
@@ -40,7 +41,10 @@ class AutenticacaoRepository{
       final FirebaseAuth auth = FirebaseAuth.instance;
 
       await auth.signOut();
+      print('aqui');
+      Navigator.of(AppRoutes.navigatorKey.currentContext!).pushNamedAndRemoveUntil(AppRoutes.login, (route) => false);
     } on FirebaseAuthException catch (e) {
+      print(e.message);
       throw ErrorModel(name: e.message ?? "Erro desconhecido", message: e.code, code: 400);
     }
   }
