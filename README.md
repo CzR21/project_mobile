@@ -18,7 +18,7 @@ O aplicativo foi desenvolvido utilizando o framework Flutter, que permite a cria
 - **Bloc:** Para gerenciamento de estados.
 - **Flutter SVG:** Para a visualização de imagens em melhor qualidade.
 - **Firebase:** Para armazenamento dos dados e autenticação do usuário.
-- **uuid:**: Para geração de IDs únicos.
+- **uuid:** Para geração de IDs únicos.
 - **Shared Preferences**: Para armazenamento local.
 
 ## Configuração e Instalação
