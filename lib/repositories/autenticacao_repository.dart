@@ -30,7 +30,7 @@ class AutenticacaoRepository{
 
       await auth.createUserWithEmailAndPassword(email: model.email, password: senha);
 
-      await FirestoreService.firebaseFirestore.collection("usuarios/${model.id}").add(model.toMap());
+      await FirestoreService.firebaseFirestore.collection("usuarios").add(model.toMap());
     } on FirebaseAuthException catch (e) {
       throw ErrorModel(name: e.message ?? "Erro desconhecido", message: e.code, code: 400);
     }
