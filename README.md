@@ -15,7 +15,7 @@ O "Food APP" é um aplicativo móvel de entrega de comida desenvolvido como proj
 O aplicativo foi desenvolvido utilizando o framework Flutter, que permite a criação de aplicativos móveis multiplataforma de forma eficiente. Além disso, foram utilizadas as seguintes tecnologias e conceitos:
 
 - **Provider:** Para o gerenciamento de estado da aplicação, como os dados do usuário, produtos selecionados e endereço de entrega.
-- **Bloc:** Para gerenciamento de estados.
+- **Bloc:** Para gerenciamento de estados e consumo de API's.
 - **Flutter SVG:** Para a visualização de imagens em melhor qualidade.
 - **Firebase:** Para armazenamento dos dados e autenticação do usuário.
 - **uuid:** Para geração de IDs únicos.
@@ -62,8 +62,8 @@ O projeto "Food APP" é de código aberto e aceita contribuições da comunidade
 * Telas de login e cadastros;
 * Tela de home e filtros de restaurantes;
 * Provider de endereço;
-* Tela de pedidos;
-* Autenticação do usuário;
+* Tela de finalização de pedidos;
+* Autenticação e cadastro do usuário;
 
 **Maria Eduarda Macedo**   
 * Pagina de restaurante;
