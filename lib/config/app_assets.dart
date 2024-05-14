@@ -2,6 +2,7 @@ class AppAssets{
 
     static const String _imagesPath = "assets/images";
     static const String _iconsPath = "assets/icons";
+    static const String _gifsPath = "assets/gifs";
 
     //Images
     static const String boloImage = "$_imagesPath/doces.svg";
@@ -11,6 +12,7 @@ class AppAssets{
     static const String bebidasImage = "$_imagesPath/bebidas.svg";
     static const String pizzaImage = "$_imagesPath/pizza.svg";
     static const String sorveteImage = "$_imagesPath/sorvete.svg";
+    static const String pedidoConcluidoImage = "$_imagesPath/pedido_concluido.svg";
 
     //Icons
     static const String arrowBackIcon = "$_iconsPath/Arrow_back.svg";
@@ -56,5 +58,8 @@ class AppAssets{
     static const String successIcon = "$_iconsPath/success.svg";
     static const String warningIcon = "$_iconsPath/warning.svg";
     static const String errorIcon = "$_iconsPath/error.svg";
+
+    //GIFs
+    static const String loadingGif = "$_gifsPath/loading.gif";
 }
 

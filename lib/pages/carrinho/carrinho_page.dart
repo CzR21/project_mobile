@@ -6,6 +6,7 @@ import 'package:project_mobile/config/app_assets.dart';
 import 'package:project_mobile/config/app_colors.dart';
 import 'package:project_mobile/config/app_fonts.dart';
 import 'package:project_mobile/config/app_mock.dart';
+import 'package:project_mobile/config/app_routes.dart';
 import 'package:project_mobile/data/models/carrinho_model.dart';
 import 'package:project_mobile/helpers/bottom_sheet_helper.dart';
 import 'package:project_mobile/helpers/converter_helper.dart';
@@ -160,7 +161,7 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
                   height: 30,
                 ),
                 AppButtomComponent(
-                  onPressed: () {},
+                  onPressed: () => _carrinho.isEmpty ? null : Navigator.of(context).pushReplacementNamed(AppRoutes.pedido) ,
                   text: 'Finalizar pedido',
                   primaryColor: AppColors.orangeDarkColor,
                 )

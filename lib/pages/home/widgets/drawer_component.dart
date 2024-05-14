@@ -18,12 +18,12 @@ class DrawerWidget extends StatefulWidget {
 class _DrawerWidgetState extends State<DrawerWidget> {
 
   List<Map<String, dynamic>> opcoes = [
-    {
-      "text": "Meus pedidos",
-      "icon": AppAssets.creditCardIcon,
-      "color": AppColors.iconGreenColor,
-      "fuction": () => {},
-    },
+    // {
+    //   "text": "Meus pedidos",
+    //   "icon": AppAssets.creditCardIcon,
+    //   "color": AppColors.iconGreenColor,
+    //   "fuction": () => {},
+    // },
     {
       "text": "Sair",
       "icon": AppAssets.logoutIcon,

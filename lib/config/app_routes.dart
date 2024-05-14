@@ -5,6 +5,7 @@ import 'package:project_mobile/pages/home/home_page.dart';
 import 'package:project_mobile/pages/login/cadastro_page.dart';
 import 'package:project_mobile/pages/login/esqueci_senha_page.dart';
 import 'package:project_mobile/pages/login/login_page.dart';
+import 'package:project_mobile/pages/pedido/pedido_finalizado_page.dart';
 import 'package:project_mobile/pages/restaurante/restaurante_page.dart';
 
 class AppRoutes {
@@ -24,6 +25,9 @@ class AppRoutes {
   // Carrinho
   static const String carrinho = '/carrinho';
 
+  //Pedido
+  static const String pedido = "/pedido";
+
   static final Map<String, WidgetBuilder> routes = {
     login: (context) => const LoginPage(),
     cadastro: (context) => const CadastroPage(),
@@ -35,6 +39,7 @@ class AppRoutes {
       return RestaurantePage(restaurante: restauranteArg);
     },
     carrinho: (context) => const CarrinhoPage(),
+    pedido: (context) => const PedidoFinalizadoPage(),
   };
 
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
