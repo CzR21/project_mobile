@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:project_mobile/blocs/autenticacao/autenticacao_bloc.dart';
 import 'package:project_mobile/blocs/autenticacao/autenticacao_state.dart';
@@ -11,7 +10,6 @@ import 'package:project_mobile/config/app_contansts.dart';
 import 'package:project_mobile/config/app_fonts.dart';
 import 'package:project_mobile/config/app_routes.dart';
 import 'package:project_mobile/data/masks/app_masks.dart';
-import 'package:project_mobile/data/models/usuario_model.dart';
 import 'package:project_mobile/helpers/toasty_helper.dart';
 import 'package:project_mobile/services/firestore_service.dart';
 

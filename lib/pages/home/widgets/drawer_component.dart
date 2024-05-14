@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_mobile/config/app_contansts.dart';
 import 'package:project_mobile/config/app_fonts.dart';
-import 'package:project_mobile/config/app_routes.dart';
 import 'package:project_mobile/repositories/autenticacao_repository.dart';
-import 'package:project_mobile/services/firestore_service.dart';
+
 import '../../../config/app_assets.dart';
 import '../../../config/app_colors.dart';
 

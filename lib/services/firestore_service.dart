@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:project_mobile/config/app_routes.dart';
+import 'package:project_mobile/data/models/endereco_model.dart';
 import 'package:project_mobile/data/models/usuario_model.dart';
-
-import '../helpers/toasty_helper.dart';
 
 class FirestoreService{
 
@@ -16,4 +14,9 @@ class FirestoreService{
     return user.docs.isEmpty ? null : UsuarioModel.fromMap(user.docs.first.data());
   }
 
+  static Future<List<EnderecoModel>> buscarEnderecos(String idUsuario) async {
+    var user = await FirestoreService.firebaseFirestore.collection("enderecos").where('idUsuario', isEqualTo: idUsuario).get();
+
+    return user.docs.map((e) => EnderecoModel.fromMap(e.data())).toList();
+  }
 }

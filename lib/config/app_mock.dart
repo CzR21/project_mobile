@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:project_mobile/data/models/carrinho_model.dart';
 import 'package:project_mobile/data/models/endereco_model.dart';
@@ -10,11 +9,14 @@ class AppMock extends ChangeNotifier {
   late SharedPreferences _prefs;
   static List<CarrinhoModel> _carrinho = [];
   static EnderecoModel _endereco = EnderecoModel(
-      longadouro: 'Rua dos bobos',
-      numero: 0,
-      bairro: "Centro",
-      cidade: 'Ponta Grossa',
-      estado: 'Paraná');
+    id: '',
+    idUsuario: '',
+    longadouro: 'Rua dos bobos',
+    numero: 0,
+    bairro: "Centro",
+    cidade: 'Ponta Grossa',
+    estado: 'Paraná'
+  );
 
   AppMock() {
     _startSettings();
