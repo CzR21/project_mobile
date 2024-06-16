@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_mobile/data/models/endere%C3%A7o_response_model.dart';
 import 'package:project_mobile/data/models/erro_model.dart';
 
 import '../../data/models/endereco_model.dart';
@@ -25,4 +26,23 @@ class ErrorGetEnderecosState extends EnderecoState {
     required this.erro,
   });
 }
+
+class SuccessGetEnderecosPeloCepState extends EnderecoState {
+
+  final EnderecoResponseModel model;
+
+  SuccessGetEnderecosPeloCepState({
+    required this.model,
+  });
+}
+
+class ErrorGetEnderecosPeloCepState extends EnderecoState {
+
+  final ErrorModel erro;
+
+  ErrorGetEnderecosPeloCepState({
+    required this.erro,
+  });
+}
+
 

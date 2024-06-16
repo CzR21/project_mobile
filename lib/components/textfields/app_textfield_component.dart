@@ -26,6 +26,7 @@ class AppTextFieldComponent extends StatefulWidget {
   final void Function(String value)? onSubmit;
   final bool Function(String value)? onPaste;
   final bool optional;
+  final bool enable;
   final bool obscureText;
   final bool hasErrorText;
   final double? fontSize;
@@ -35,6 +36,7 @@ class AppTextFieldComponent extends StatefulWidget {
   const AppTextFieldComponent({
     super.key,
     this.autofocus = false,
+    this.enable = true,
     this.focusNode,
     required this.controller,
     this.individualKey,
@@ -103,6 +105,7 @@ class _AppTextFieldComponentState extends State<AppTextFieldComponent> {
             }
             return null;
           },
+          enabled: widget.enable,
           autofocus: widget.autofocus,
           focusNode: focusNode,
           obscureText: widget.obscureText,
@@ -121,6 +124,12 @@ class _AppTextFieldComponentState extends State<AppTextFieldComponent> {
             filled: true,
             fillColor: AppColors.greyLiteColor,
             border: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: !validated ? AppColors.textRedColor : AppColors.greyLiteColor,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            disabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 color: !validated ? AppColors.textRedColor : AppColors.greyLiteColor,
               ),

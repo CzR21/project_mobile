@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:project_mobile/blocs/endereco/endereco_bloc.dart';
 import 'package:project_mobile/config/app_mock.dart';
+import 'package:project_mobile/config/app_routes.dart';
 import 'package:provider/provider.dart';
 
 import '../../../blocs/endereco/endereco_state.dart';
@@ -56,7 +57,14 @@ class _EnderecoBottomSheetState extends State<EnderecoBottomSheet> {
             const SizedBox(width: 10,),
             Expanded(child: Text('Selecione um endereço', style: AppFonts.boldLarge.copyWith(color: AppColors.textDarkColor),)),
             GestureDetector(
-              onTap: () => null,
+              onTap: () async {
+                var endereco = await Navigator.of(context).pushNamed(AppRoutes.cadastrarEndereco);
+
+                if(endereco != null){
+                  provider.trocarEndereco(endereco as EnderecoModel);
+                  Navigator.of(context).pop();
+                }
+              },
               child: SvgPicture.asset(
                 AppAssets.plusIcon,
                 width: 30,

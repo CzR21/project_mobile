@@ -11,6 +11,8 @@ class AppIconButtomComponent extends StatefulWidget{
   final double width;
   final double iconWidth;
   final Function function;
+  final double borderRadios;
+  final Color? borderColor;
 
   const AppIconButtomComponent({
     super.key,
@@ -19,7 +21,9 @@ class AppIconButtomComponent extends StatefulWidget{
     this.backgroundColor,
     this.width = 45,
     this.iconWidth = 15,
-    required this.function
+    required this.function,
+    this.borderRadios = 999,
+    this.borderColor,
   });
 
 
@@ -37,7 +41,8 @@ class _AppIconButtomComponentState extends State<AppIconButtomComponent> {
         height: widget.width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(999),
+          border: widget.borderColor == null ? null : Border.all(color: widget.borderColor!),
+          borderRadius: BorderRadius.circular(widget.borderRadios),
           color: widget.backgroundColor ?? AppColors.greyLiteColor
         ),
         child: SvgPicture.asset(

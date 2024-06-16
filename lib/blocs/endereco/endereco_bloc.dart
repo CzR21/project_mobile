@@ -18,5 +18,13 @@ class EnderecoBloc extends Bloc<EnderecoEvent, EnderecoState> {
         emit(ErrorGetEnderecosState(erro: e));
       }
     });
+
+    on<GetEnderecosPeloCepEvent>((event, emit) async {
+      try {
+        emit(SuccessGetEnderecosPeloCepState(model: await EnderecoRepository.getEnderecoPeloCep(event.cep)));
+      } on ErrorModel catch (e) {
+        emit(ErrorGetEnderecosPeloCepState(erro: e));
+      }
+    });
   }
 }

@@ -19,4 +19,8 @@ class FirestoreService{
 
     return user.docs.map((e) => EnderecoModel.fromMap(e.data())).toList();
   }
+
+  static Future<void> adicionarEndereco(EnderecoModel endereco) async {
+    await firebaseFirestore.collection("enderecos").add(endereco.toMap());
+  }
 }

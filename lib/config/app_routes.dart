@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_mobile/data/models/restaurante_model.dart';
 import 'package:project_mobile/pages/carrinho/carrinho_page.dart';
+import 'package:project_mobile/pages/endereco/cadastrar_endereco_page.dart';
 import 'package:project_mobile/pages/home/home_page.dart';
 import 'package:project_mobile/pages/login/cadastro_page.dart';
 import 'package:project_mobile/pages/login/esqueci_senha_page.dart';
@@ -28,6 +29,9 @@ class AppRoutes {
   //Pedido
   static const String pedido = "/pedido";
 
+  //Pedido
+  static const String cadastrarEndereco = "/cadastrarEndereco";
+
   static final Map<String, WidgetBuilder> routes = {
     login: (context) => const LoginPage(),
     cadastro: (context) => const CadastroPage(),
@@ -40,6 +44,7 @@ class AppRoutes {
     },
     carrinho: (context) => const CarrinhoPage(),
     pedido: (context) => const PedidoFinalizadoPage(),
+    cadastrarEndereco: (context) => const CadastrarEnderecoPage(),
   };
 
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

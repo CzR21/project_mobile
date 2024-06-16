@@ -68,7 +68,7 @@ class _AppButtomComponentState extends State<AppButtomComponent> {
         elevation: 0,
         padding: EdgeInsets.symmetric(
           vertical: widget.width == null ? 16 : 8,
-          horizontal: 24,
+          horizontal: widget.width == null ? 24 : 0,
         ),
         splashFactory: InkSplash.splashFactory,
         alignment: Alignment.center,
