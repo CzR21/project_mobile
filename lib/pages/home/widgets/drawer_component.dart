@@ -41,16 +41,30 @@ class _DrawerWidgetState extends State<DrawerWidget> {
         Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(20),
+              padding: AppConstants.usuario.imagemUrl == ""? const EdgeInsets.all(20) :const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(999),
                 color: AppColors.orangeLiteColor,
               ),
-              child: SvgPicture.asset(
-                AppAssets.userIcon,
-                width: 50,
-                color: AppColors.orangeDarkColor,
-              ),
+              child: AppConstants.usuario.imagemUrl == ""
+                  ? SvgPicture.asset(
+                      AppAssets.userIcon,
+                      width: 50,
+                      color: AppColors.orangeDarkColor,
+                    )
+                  : ClipOval(
+                      child: Image.network(
+                        AppConstants.usuario.imagemUrl!,
+                        width: 80,
+                        height: 80,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => SvgPicture.asset(
+                          AppAssets.userIcon,
+                          width: 50,
+                          color: AppColors.orangeDarkColor,
+                        ),
+                      ),
+                    ),
             ),
 
             const SizedBox(width: 30,),
@@ -65,7 +79,6 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 ],
               ),
             ),
-
           ],
         ),
 

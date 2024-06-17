@@ -23,7 +23,7 @@ class AutenticacaoBloc extends Bloc<AutenticacaoEvent, AutenticacaoState> {
 
     on<CadastroEvent>((event, emit) async {
       try {
-        await AutenticacaoRepository.cadastro(event.model, event.senha);
+        await AutenticacaoRepository.cadastro(event.model, event.senha, event.imagem);
         emit(SuccessCadastroState());
       } on ErrorModel catch (e) {
         emit(ErrorCadastroState(erro: e));

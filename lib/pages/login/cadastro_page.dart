@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:project_mobile/blocs/autenticacao/autenticacao_bloc.dart';
 import 'package:project_mobile/blocs/autenticacao/autenticacao_state.dart';
 import 'package:project_mobile/components/buttons/app_back_buttom_component.dart';
@@ -38,6 +41,9 @@ class _CadastroPageState extends State<CadastroPage> {
   bool visibleText = false;
   bool visibleText2 = false;
   bool loading = false;
+
+  XFile? _imageFile;
+  final ImagePicker _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -155,6 +161,23 @@ class _CadastroPageState extends State<CadastroPage> {
                               ),
 
                               const SizedBox(height: 20,),
+                              GestureDetector(
+                                onTap: _showImageSourceDialog,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[200],
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  alignment: Alignment.center,
+                                  height: 150,
+                                  width: 150,
+                                  child: _imageFile == null
+                                      ? Icon(Icons.camera_alt,
+                                          color: Colors.grey[800], size: 50)
+                                      : Image.file(File(_imageFile!.path)),
+                                ),
+                              ),
+                              const SizedBox(height: 20,),
 
                               AppButtomComponent(
                                 onPressed: () => _registrar(),
@@ -174,6 +197,62 @@ class _CadastroPageState extends State<CadastroPage> {
     );
   }
 
+  Future<void> _showImageSourceDialog() async {
+    await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Escolha a origem da imagem'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: const Text('Câmera'),
+              onTap: () {
+                Navigator.of(context).pop();
+                _takePicture();
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.image),
+              title: const Text('Galeria'),
+              onTap: () {
+                Navigator.of(context).pop();
+                _pickImage();
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _takePicture() async {
+    try {
+      final pickedFile = await _picker.pickImage(source: ImageSource.camera);
+      if (pickedFile != null) {
+        setState(() {
+          _imageFile = pickedFile;
+        });
+      }
+    } catch (e) {
+      print('Erro ao tirar a foto: $e');
+    }
+  }
+
+  Future<void> _pickImage() async {
+    try {
+      final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        setState(() {
+          _imageFile = pickedFile;
+        });
+      }
+    } catch (e) {
+      print('Erro ao escolher a imagem: $e');
+    }
+  }
+
   _registrar(){
     var validate1 = _nameFormkey.currentState!.validate();
     var validate2 = _emailFormkey.currentState!.validate();
@@ -187,16 +266,18 @@ class _CadastroPageState extends State<CadastroPage> {
           id: const Uuid().v4().toString(),
           nome: _nameController.text,
           email: _emailController.text,
-          dataCadastro: DateTime.now().toString()
+          dataCadastro: DateTime.now().toString(),
+          imagemUrl: "",
       );
 
-      _autenticacaoBloc.add(CadastroEvent(model: model, senha: _passwordController.text));
+      _autenticacaoBloc.add(CadastroEvent(model: model, senha: _passwordController.text, imagem: _imageFile != null? _imageFile!.path: ""));
       _autenticacaoBloc.stream.listen((event) {
         if(event is SuccessCadastroState){
           ToastHelper.showMessage(context: context, messageType: MessageType.success, message: "Cadastros realizado com sucesso");
           Navigator.of(context).pop();
         }else if(event is ErrorCadastroState){
-          ToastHelper.showMessage(context: context, messageType: MessageType.error, message: "Usuário já cadastrado");
+          if(event.erro.message == "email-already-in-use")  ToastHelper.showMessage(context: context, messageType: MessageType.error, message: "Usuário já cadastrado");
+          if(event.erro.message == "weak-password") ToastHelper.showMessage(context: context, messageType: MessageType.error, message: "Senha deve conter mais de 6 caracteres");
           setState(() => loading = false);
         }
       });

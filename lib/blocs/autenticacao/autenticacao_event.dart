@@ -18,9 +18,11 @@ class CadastroEvent extends AutenticacaoEvent {
 
   final UsuarioModel model;
   final String senha;
+  final String imagem;
 
   CadastroEvent({
     required this.model,
-    required this.senha
+    required this.senha,
+    required this.imagem,
   });
 }

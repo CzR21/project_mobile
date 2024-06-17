@@ -6,12 +6,14 @@ class UsuarioModel {
   String nome;
   String email;
   String dataCadastro;
+  String? imagemUrl;
 
   UsuarioModel({
     required this.id,
     required this.nome,
     required this.email,
-    required this.dataCadastro
+    required this.dataCadastro,
+    this.imagemUrl = "",
   });
 
   Map<String, dynamic> toMap() {
@@ -20,6 +22,7 @@ class UsuarioModel {
       'nome': nome,
       'email': email,
       'dataCadastro': dataCadastro,
+      'imagemUrl': imagemUrl,
     };
   }
 
@@ -29,6 +32,7 @@ class UsuarioModel {
       nome: map['nome'] as String,
       email: map['email'] as String,
       dataCadastro: map['dataCadastro'] as String,
+      imagemUrl: map['imagemUrl'] as String? ?? "",
     );
   }
 
