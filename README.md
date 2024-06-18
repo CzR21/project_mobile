@@ -10,6 +10,7 @@ O "Food APP" é um aplicativo móvel de entrega de comida desenvolvido como proj
 4. **Adição de Itens ao Carrinho:** Os usuários podem adicionar itens selecionados ao seu carrinho de compras.
 5. **Visualização do Carrinho:** Os usuários podem visualizar o conteúdo do seu carrinho, ajustar quantidades e remover itens conforme necessário.
 6. **Realização de Pedidos:** Os usuários podem finalizar o pedido e fornecer detalhes adicionais, como endereço de entrega.
+7. **Cadastros de Endereços:** Os usuários podem adicionar enredeços de sua preferência através da localização do dispositivo ou uma busca pelo CEP.
 
 ## Tecnologias Utilizadas
 O aplicativo foi desenvolvido utilizando o framework Flutter, que permite a criação de aplicativos móveis multiplataforma de forma eficiente. Além disso, foram utilizadas as seguintes tecnologias e conceitos:
@@ -20,6 +21,10 @@ O aplicativo foi desenvolvido utilizando o framework Flutter, que permite a cria
 - **Firebase:** Para armazenamento dos dados e autenticação do usuário.
 - **uuid:** Para geração de IDs únicos.
 - **Shared Preferences**: Para armazenamento local.
+- **Firebase messaging:** Para envio de notificações.
+- **Geolocator:** Para acessar a localização do dispositivo.
+- **Dio:** Para consumo de API's.
+- **Image Picker:** Para caputra de fotos.
 
 ## Configuração e Instalação
 Antes de executar o aplicativo, certifique-se de ter o Flutter instalado em sua máquina. Você pode verificar a versão atual do Flutter digitando o seguinte comando no terminal:
@@ -64,11 +69,14 @@ O projeto "Food APP" é de código aberto e aceita contribuições da comunidade
 * Provider de endereço;
 * Tela de finalização de pedidos;
 * Autenticação e cadastro do usuário;
+* Configuração de notificações;
+* Consumo da API de CEP e localização;
 
 **Maria Eduarda Macedo**   
 * Pagina de restaurante;
 * Criação dos assets;
 * Provider de produtos do carrinho;
+* Cadastro de fotos;
     
 **Murilo Matheus Ruiz** 
 * Tela de carrinho
