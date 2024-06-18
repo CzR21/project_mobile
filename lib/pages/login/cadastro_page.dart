@@ -161,21 +161,31 @@ class _CadastroPageState extends State<CadastroPage> {
                               ),
 
                               const SizedBox(height: 20,),
-                              GestureDetector(
-                                onTap: _showImageSourceDialog,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[200],
-                                    borderRadius: BorderRadius.circular(10),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                padding: const EdgeInsets.only(bottom: 5.0),
+                                child: Text('FOTO DE PERFIL', style: AppFonts.regularDefault.copyWith(color: AppColors.textDarkColor), ),
+                              ),
+                              Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: _showImageSourceDialog,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey[200],
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      alignment: Alignment.center,
+                                      height: 50,
+                                      width: 50,
+                                      child: _imageFile == null
+                                          ? Icon(Icons.camera_alt, color: Colors.grey[800], size: 25)
+                                          : Icon(Icons.refresh, color: Colors.grey[800], size: 25)
+                                    ),
                                   ),
-                                  alignment: Alignment.center,
-                                  height: 150,
-                                  width: 150,
-                                  child: _imageFile == null
-                                      ? Icon(Icons.camera_alt,
-                                          color: Colors.grey[800], size: 50)
-                                      : Image.file(File(_imageFile!.path)),
-                                ),
+                                  const SizedBox(width: 20,),
+                                  _imageFile == null ? Container() : Image.file(File(_imageFile!.path), height: 50, width: 50,)
+                                ],
                               ),
                               const SizedBox(height: 20,),
 

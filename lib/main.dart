@@ -1,15 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:project_mobile/config/app_mock.dart';
 import 'package:project_mobile/config/app_routes.dart';
 import 'package:project_mobile/firebase_options.dart';
 import 'package:project_mobile/repositories/autenticacao_repository.dart';
+import 'package:project_mobile/services/notification_service.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  NotificationService().initialize();
   AutenticacaoRepository.usuarioAutenticado.listen((User? user) => runApp(MyApp(initialRoute: user == null ? AppRoutes.login : AppRoutes.home,)));
 }
 

@@ -51,7 +51,6 @@ class _CadastrarEnderecoPageState extends State<CadastrarEnderecoPage> {
           padding: const EdgeInsets.all(25.0),
           child: Column(
             children: [
-              const SizedBox(height: 50,),
               LayoutBuilder(
                 builder: (context, contrais) {
                   return Row(
@@ -240,8 +239,9 @@ class _CadastrarEnderecoPageState extends State<CadastrarEnderecoPage> {
         _longadouroController.text = place.street ?? "";
         _numeroController.text = place.subThoroughfare ?? "";
         _bairroController.text = place.subLocality ?? "";
-        _cidadeController.text = place.locality ?? "";
+        _cidadeController.text = place.subAdministrativeArea ?? "";
         _estadoController.text = place.administrativeArea ?? "";
+        _cepController.text = place.postalCode ?? "";
       });
     } catch (e) {
       ToastHelper.showMessage(context: context, messageType: MessageType.error, message: "Erro: $e");
